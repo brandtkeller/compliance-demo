@@ -16,5 +16,6 @@ OSCAL
 
 ## Reproducible Deployment
 - Create EC2 instance w/ k3d (Big Bang Dev script currently)
+  - [k3d-dev.sh](https://repo1.dso.mil/big-bang/bigbang/-/blob/master/docs/assets/scripts/developer/k3d-dev.sh?ref_type=heads)
 - Clone this repository
 - ./build-and-deploy.sh
