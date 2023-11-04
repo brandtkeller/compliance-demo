@@ -13,3 +13,8 @@ OSCAL
 - Begin to fill out individual component definitions with baseline Kubernetes validation
 - Loop
   - Test - iterate - test
+
+## Reproducible Deployment
+- Create EC2 instance w/ k3d (Big Bang Dev script currently)
+- Clone this repository
+- ./build-and-deploy.sh
