@@ -8,11 +8,20 @@ Demonstrate Lula validating against a live environment and validating multiple c
 Document reproducible deployment for DUBBD + UDS IDAM + UDS SSO
 
 OSCAL
-- Grab Copies for all/some of the associated deployment packages
+- &check; Grab Copies for all/some of the associated deployment packages
+- Grab/create UDS-IDAM and UDS-SSO OSCAL
 - Create a component-generator manifest for the file aggregation
 - Begin to fill out individual component definitions with baseline Kubernetes validation
-- Loop
-  - Test - iterate - test
+  - istio
+  - kiali
+  - kyverno
+  - loki
+  - monitoring
+  - neuvector
+  - promtail
+  - tempo
+  - keycloak
+  - authservice
 
 ## Reproducible Deployment
 - Create EC2 instance w/ k3d (Big Bang Dev script currently)
