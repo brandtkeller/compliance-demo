@@ -20,3 +20,5 @@ components:
   - name: components/neuvector.yaml
   - name: components/promtail.yaml
   - name: components/tempo.yaml
+  - name: components/idam.yaml
+  - name: components/sso.yaml
