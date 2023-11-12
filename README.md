@@ -26,5 +26,8 @@ OSCAL
 ## Reproducible Deployment
 - Create EC2 instance w/ k3d (Big Bang Dev script currently)
   - [k3d-dev.sh](https://repo1.dso.mil/big-bang/bigbang/-/blob/master/docs/assets/scripts/developer/k3d-dev.sh?ref_type=heads)
-- Clone this repository
+- Clone this repository to your remote instance
 - ./build-and-deploy.sh
+
+## Notes
+- Using the `0.0.5` of UDS CLI to match uds-sso repository dependency 
