@@ -10,6 +10,17 @@ curl -LO https://github.com/defenseunicorns/zarf/releases/download/v0.31.0/zarf_
 sudo chmod +x zarf_v0.31.0_Linux_amd64
 sudo mv zarf_v0.31.0_Linux_amd64 /usr/local/bin/zarf
 
+# setup go
+curl -LO https://go.dev/dl/go1.21.4.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.21.4.linux-amd64.tar.gz
+export PATH=$PATH:/usr/local/go/bin
+
+# setup Lula - if we have already pre-aggregated then maybe component-generator is not required
+git clone https://github.com/defenseunicorns/lula.git
+cd lula
+sudo make install
+cd ..
+
 # Create bundle
 cd bundle && uds bundle create --set INIT_VERSION=v0.29.2 --set METALLB_VERSION=0.0.1 --set DUBBD_VERSION=0.11.0 --set IDAM_VERSION=0.1.12 --set SSO_VERSION=0.1.7 --confirm
 
