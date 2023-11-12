@@ -164,13 +164,17 @@ component-definition:
                 authorization protocol that uses cryptographic methods for secure single sign-on processes. By incorporating these mechanisms, 
                 Keycloak provides a secure environment that aligns with compliance control requirements related to encryption and data protection.
               links:
-                - href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
-                  rel: reference 
-                  text: Lula Validation ac-17.2
+                - href: "#081082ec-5557-4cfa-ba82-59a5690ded77"
+                  rel: reference
+                  text: Lula Validation
             - uuid: 210b1a83-fc62-43cd-b3f2-89a94f75ed15
               control-id: ac-17.3
               description: >-
                 Keycloak remote access traffic is routed through secure Istio network.
+              links:
+                - href: "#f3febce8-a2dc-410a-882c-88ef695ee783"
+                  rel: reference
+                  text: Lula Validation ac-17.3
             - uuid: 5df00124-c0f9-41d3-b38e-ad4ecbd27a56
               control-id: ac-17.4
               description: >-
@@ -308,26 +312,47 @@ component-definition:
         rlinks:
           - href: https://github.com/defenseunicorns/uds-idam
       - uuid: 081082ec-5557-4cfa-ba82-59a5690ded77
-        title: Lula Validation ac-17.2
-        rlinks: 
-         - href: lula.dev
+        title: Lula Validation
+        rlinks:
+          - href: lula.dev
         description: >-
           target:
-           provider: opa 
-           domain: kubernetes 
+           provider: opa
+           domain: kubernetes
            payload:
             resourceRules:                               # Mandatory, resource selection criteria, at least one resource rule is required
             - Group:                                     # empty or "" for core group
-              Version: networking.istio.io/v1beta1       # Version of resource
-              Resource: Gateway                          # Resource type
-              Namespaces: [istio-operator]               # Namespaces to validate the above resources in. Empty or "" for all namespaces or non-namespaced resources
+              Version: v1                                # Version of resource
+              Resource: pods                             # Resource type
+              Namespaces: [keycloak]                     # Namespaces to validate the above resources in. Empty or "" for all namespaces or non-namespaced resources
+            rego: |
+              package validate
+
+              validate {
+                input.kind == "Pod"
+                podLabel := input.metadata.labels["security.istio.io/tlsMode"]
+                podLabel == "istio"
+              }
+      - uuid: f3febce8-a2dc-410a-882c-88ef695ee783
+        title: Lula Validation ac-17.3
+        rlinks:
+          - href: lula.dev
+        description: >-
+           target:
+            provider:
+            domain: kubernetes
+            payload:
+             resourceRules:
+             - Group:
+                Version: networking.istio.io/v1beta1
+                Resource: gateway
+                Namespace: [istio-system] 
             rego: |
               package validate
 
               validate {
                 input.kind == "Gateway"
-                keycloakApp := input.Spec.Selector.App
-                keycloakApp == "keycloak-ingressgateway"
-                specTls := input.Spec.Tls.Mode
-                specTls == "PASSTHROUGH"
+                input.metadata.name == "passthrough"
+                server := input.spec.servers[_] 
+                server.tls.mode == "PASSTHROUGH"
               }
