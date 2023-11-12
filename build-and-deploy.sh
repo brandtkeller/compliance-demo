@@ -18,7 +18,8 @@ export PATH=$PATH:/usr/local/go/bin
 # setup Lula - if we have already pre-aggregated then maybe component-generator is not required
 git clone https://github.com/defenseunicorns/lula.git
 cd lula
-sudo make install
+CGO_ENABLED=0 go build  -trimpath -tags '' -ldflags '-w -s' -o '/home/ubuntu/compliance-demo/lula/bin/lula' .
+sudo mv bin/lula /usr/local/bin/lula
 cd ..
 
 # Create bundle
