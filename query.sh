@@ -7,7 +7,7 @@ function kubectlgetall {
   done
 }
 
-for i in $(kubectl get ns -o name | grep -v "kube-system" | grep -v "default" | sort | uniq); do
+for i in $(kubectl get ns -o name | grep -v "kube-system" | grep -v "default" | grep -v "kube-public" | grep -v "kube-node-lease" | sort | uniq); do
   NS=$(echo $i | cut -d "/" -f 2)
   echo $NS
   kubectlgetall $NS
