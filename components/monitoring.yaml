@@ -49,6 +49,12 @@ component-definition:
           - href: '#30c04002-fcd2-45e1-804f-1e5070e42a9f'
             rel: reference
             text: Lula Validation
+          - href: '#b8353b85-4bec-49f0-bdc0-713ebac483e6'
+            rel: reference
+            text: Lula Validation
+          - href: '#494a1c21-db5f-4049-9015-b00dc98f3ace'
+            rel: reference
+            text: Lula Validation
       - uuid: B958C179-EE1F-40FC-BA2A-03B0072B20E6
         control-id: au-4
         description: >-
@@ -155,4 +161,50 @@ component-definition:
                 podsRequired := input.status.required
                 podsReady := input.status.ready
                 podsReady == podsRequired
+              }
+    - uuid: b8353b85-4bec-49f0-bdc0-713ebac483e6
+      title: Lula Validation
+      rlinks:
+        - href: lula.dev
+      description: >-
+        target:
+          provider: opa
+          domain: kubernetes
+          payload:
+            resourceRules:
+            - Group: apps
+              Version: v1
+              Resource: statefulsets
+              Namespaces: [monitoring]
+            rego: |
+              package validate
+
+              validate {
+                input.kind == "Statefulset"
+                podsRequired := input.status.required
+                podsReady := input.status.ready
+                podsReady == podsRequired
+              }
+    - uuid: 494a1c21-db5f-4049-9015-b00dc98f3ace
+      title: Lula Validation
+      rlinks:
+        - href: lula.dev
+      description: >-
+        target:
+          provider: opa
+          domain: kubernetes
+          payload:
+            resourceRules:
+            - Group: apps
+              Version: v1
+              Resource: daemonsets
+              Namespaces: [monitoring]
+            rego: |
+              package validate
+
+              validate {
+                input.kind == "Daemonset"
+                podsDesired := input.status.desiredNumberScheduled
+                podsReady := input.status.numberReady
+                podsReady == podsDesired
               }
