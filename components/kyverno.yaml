@@ -43,7 +43,7 @@ component-definition:
         description: >-
           Kyverno can be configured for cluster-wide and namespaced policies for system configuration. Exceptions can be implemented to policies that will allow for explicit deviations approved by policies/configurations declared in git.
         links:
-          - href: '#uuidhere'
+          - href: '#8e6d1dfa-ba75-4263-851a-946472b5945a'
             rel: reference
             text: Lula Validation
       - uuid: 6e1f05fc-3eab-45a2-9b16-d2c5acfed20b
@@ -76,7 +76,7 @@ component-definition:
       title: Big Bang Kyverno package
       rlinks:
         - href: https://repo1.dso.mil/platform-one/big-bang/apps/sandbox/kyverno
-    - uuid: 
+    - uuid: 8e6d1dfa-ba75-4263-851a-946472b5945a
       title: Lula Validation
       rlinks:
         - href: lula.dev
@@ -95,7 +95,7 @@ component-definition:
 
               validate {
                 input.kind == "Deployment"
-                podsRequired := input.status.required
-                podsReady := input.status.ready
+                podsRequired := input.status.replicas
+                podsReady := input.status.readyReplicas
                 podsReady == podsRequired
               }

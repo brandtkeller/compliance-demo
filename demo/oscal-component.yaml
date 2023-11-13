@@ -1,5 +1,5 @@
 component-definition:
-  uuid: fa324590-7bf2-4795-90fd-7bbc5587b89d
+  uuid: 6aebb1cc-7869-42b8-ba62-890260c71376
   metadata:
     version: 0.0.1
     parties:
@@ -9,7 +9,7 @@ component-definition:
       links:
       - rel: website
         href: https://defenseunicorns.com
-    last-modified: "2023-11-03T14:47:03-07:00"
+    last-modified: "2023-11-13T18:33:50-05:00"
     oscal-version: 1.1.1
     title: DUBBD + UDS IDAM + UDS SSO
   components:
@@ -65,6 +65,10 @@ component-definition:
           ``` Note: Even though it's named External Authorization and you're authoring an AuthorizationPolicy, this feature can also be used to perform authentication: the configuration allows you to extract arbitrary headers to hand to the server, and allows the server to return arbitrary data to be attached to the request before it is forwarded on, in addition to enforcing any policy decisions the server returns.
           # BigBang Implementation BigBang ships with configuration to implement external authorization out of the box. The default installation includes a Keycloak-based external authorization server that can be integrated with your existing identity provider to perform authentication as well as authorization of end-user access per request.
       - uuid: D7717A9B-7604-45EF-8DCF-EE4DF0417F9C
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
         control-id: ac-4
         description: |-
           Istio implements with mission team configuration
@@ -527,6 +531,10 @@ component-definition:
       description: Controls implemented by authservice for inheritance by applications
       implemented-requirements:
       - uuid: 6EC9C476-9C9D-4EF6-854B-A5B799D8AED1
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#e50e9d2a-f8b5-47b2-b40f-3ecc84b5e29b'
         control-id: si-4.10
         description: Kiali provides visibility into mTLS settings of all Istio traffic
           in the cluster.
@@ -556,6 +564,10 @@ component-definition:
           would allow changes to be tested against policies without blocking development.
           Allowing for policies to be mirrored and enforced in production.
       - uuid: BE54EDE4-8279-4AE6-B8C3-5B68CC235E5E
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#8e6d1dfa-ba75-4263-851a-946472b5945a'
         control-id: cm-6
         description: Kyverno can be configured for cluster-wide and namespaced policies
           for system configuration. Exceptions can be implemented to policies that
@@ -597,6 +609,10 @@ component-definition:
       description: Controls implemented by Loki for inheritance by applications
       implemented-requirements:
       - uuid: DEA798EE-6B68-4BB8-80DE-1BC85952F26C
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#be2f7a63-6136-4ab9-851e-93e46d71eb0b'
         control-id: ac-5
         description: GEL implements RBAC to define system authorization and separation
           of duties
@@ -680,6 +696,10 @@ component-definition:
           on disk in a time series data base, and later queried through a separate
           component providing a web interface for the query language: PromQL. "
       - uuid: F2FFC2FD-6826-43EE-9922-705A76FE63CC
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#30c04002-fcd2-45e1-804f-1e5070e42a9f'
         control-id: au-3.1
         description: Grafana has pre-configured dashboards showing the audit records
           from Cluster Auditor saved in Prometheus.
@@ -802,6 +822,10 @@ component-definition:
         description: NeuVector supports mapping internal user accounts and roles in
           addition to LDAP and SSO roles or groups for providing RBAC access. https://open-docs.neuvector.com/configuration/users
       - uuid: 107864dd-f3e6-46b5-8004-2c7f717b2426
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4'
         control-id: ac-6.9
         description: NeuVector logging access related audit events. https://open-docs.neuvector.com/reporting/reporting
       - uuid: 88d83b17-b238-48e5-b1d2-f500035c6dc0
@@ -933,6 +957,10 @@ component-definition:
           and underlying operating systems, allowing the aggregation of privileged
           function calls.
       - uuid: CF81FA93-D365-42C2-82B1-A24EB92556E5
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#f1c83e1d-5643-4d27-b865-af2a86035e2e'
         control-id: au-2
         description: |-
           Logging daemons are present on each node that BigBang is installed on.  Out of the box, the following events are captured:
@@ -965,6 +993,10 @@ component-definition:
       description: Controls implemented by Tempo for inheritance by applications
       implemented-requirements:
       - uuid: D0EE25CB-DAA8-4298-BBB9-A5AC72034020
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#b5e7867f-2453-4fb5-abfe-4246fed9de25'
         control-id: si-4.4
         description: Jaeger is used, in conjunction with Istio configurations, to
           collect and aggregate network communications within the system.  This allows
@@ -997,6 +1029,29 @@ component-definition:
       title: Big Bang Istio Operator package
       rlinks:
       - href: https://repo1.dso.mil/platform-one/big-bang/apps/core/istio-controlplane
+    - uuid: 506c5fd6-42a1-4a27-8be4-ff8d305dcbb2
+      title: Lula Validation
+      description: |-
+        target:
+          provider: opa
+          domain: kubernetes
+          payload:
+            resourceRules:
+            - Group: apps
+              Version: v1
+              Resource: deployments
+              Namespaces: [istio-system]
+            rego: |
+              package validate
+
+              validate {
+                input.kind == "Deployment"
+                podsRequired := input.status.required
+                podsReady := input.status.ready
+                podsReady == podsRequired
+              }
+      rlinks:
+      - href: lula.dev
     - uuid: BFF74303-1E06-469E-ADCF-338E6DDB8876
       title: Github Repo - Kiali
       rlinks:
@@ -1005,6 +1060,29 @@ component-definition:
       title: Big Bang Kiali package
       rlinks:
       - href: https://repo1.dso.mil/platform-one/big-bang/apps/core/kiali
+    - uuid: e50e9d2a-f8b5-47b2-b40f-3ecc84b5e29b
+      title: Lula Validation
+      description: |-
+        target:
+          provider: opa
+          domain: kubernetes
+          payload:
+            resourceRules:
+            - Group: apps
+              Version: v1
+              Resource: deployments
+              Namespaces: [kiali]
+            rego: |
+              package validate
+
+              validate {
+                input.kind == "Deployment"
+                podsRequired := input.status.required
+                podsReady := input.status.ready
+                podsReady == podsRequired
+              }
+      rlinks:
+      - href: lula.dev
     - uuid: 0711df1f-d740-4e39-a25f-15cc7a017f57
       title: Kyverno
       rlinks:
@@ -1013,6 +1091,29 @@ component-definition:
       title: Big Bang Kyverno package
       rlinks:
       - href: https://repo1.dso.mil/platform-one/big-bang/apps/sandbox/kyverno
+    - uuid: 8e6d1dfa-ba75-4263-851a-946472b5945a
+      title: Lula Validation
+      description: |-
+        target:
+          provider: opa
+          domain: kubernetes
+          payload:
+            resourceRules:
+            - Group: apps
+              Version: v1
+              Resource: deployments
+              Namespaces: [kyverno]
+            rego: |
+              package validate
+
+              validate {
+                input.kind == "Deployment"
+                podsRequired := input.status.required
+                podsReady := input.status.ready
+                podsReady == podsRequired
+              }
+      rlinks:
+      - href: lula.dev
     - uuid: 95F7C84A-2FD9-4E1C-BB29-7B788ADB716D
       title: Loki
       rlinks:
@@ -1021,6 +1122,29 @@ component-definition:
       title: Big Bang Loki package
       rlinks:
       - href: https://repo1.dso.mil/platform-one/big-bang/apps/sandbox/loki
+    - uuid: be2f7a63-6136-4ab9-851e-93e46d71eb0b
+      title: Lula Validation
+      description: |-
+        target:
+          provider: opa
+          domain: kubernetes
+          payload:
+            resourceRules:
+            - Group: apps
+              Version: v1
+              Resource: statefulsets
+              Namespaces: [logging-loki]
+            rego: |
+              package validate
+
+              validate {
+                input.kind == "Statefulset"
+                podsRequired := input.status.required
+                podsReady := input.status.ready
+                podsReady == podsRequired
+              }
+      rlinks:
+      - href: lula.dev
     - uuid: 97FF87A0-EB34-4001-839A-32FF0815D896
       title: Github Repo - Kube Prometheus Stack
       rlinks:
@@ -1029,6 +1153,29 @@ component-definition:
       title: Big Bang Monitoring package
       rlinks:
       - href: https://repo1.dso.mil/platform-one/big-bang/apps/core/monitoring
+    - uuid: 30c04002-fcd2-45e1-804f-1e5070e42a9f
+      title: Lula Validation
+      description: |-
+        target:
+          provider: opa
+          domain: kubernetes
+          payload:
+            resourceRules:
+            - Group: apps
+              Version: v1
+              Resource: deployments
+              Namespaces: [monitoring]
+            rego: |
+              package validate
+
+              validate {
+                input.kind == "Deployment"
+                podsRequired := input.status.required
+                podsReady := input.status.ready
+                podsReady == podsRequired
+              }
+      rlinks:
+      - href: lula.dev
     - uuid: b21ef636-e3e7-4386-8f10-b1f3243cc9a6
       title: NeuVector
       rlinks:
@@ -1037,6 +1184,29 @@ component-definition:
       title: Big Bang NeuVector package
       rlinks:
       - href: https://repo1.dso.mil/platform-one/big-bang/apps/security-tools/neuvector
+    - uuid: 17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4
+      title: Lula Validation
+      description: |-
+        target:
+          provider: opa
+          domain: kubernetes
+          payload:
+            resourceRules:
+            - Group: apps
+              Version: v1
+              Resource: deployments
+              Namespaces: [neuvector]
+            rego: |
+              package validate
+
+              validate {
+                input.kind == "Deployment"
+                podsRequired := input.status.required
+                podsReady := input.status.ready
+                podsReady == podsRequired
+              }
+      rlinks:
+      - href: lula.dev
     - uuid: D552C935-E40C-4A03-B5CC-4605EBD95B6D
       title: Promtail
       rlinks:
@@ -1045,6 +1215,29 @@ component-definition:
       title: Big Bang Promtail package
       rlinks:
       - href: https://repo1.dso.mil/platform-one/big-bang/apps/sandbox/promtail
+    - uuid: f1c83e1d-5643-4d27-b865-af2a86035e2e
+      title: Lula Validation
+      description: |-
+        target:
+          provider: opa
+          domain: kubernetes
+          payload:
+            resourceRules:
+            - Group: apps
+              Version: v1
+              Resource: daemonsets
+              Namespaces: [promtail]
+            rego: |
+              package validate
+
+              validate {
+                input.kind == "Daemonset"
+                podsRequired := input.status.required
+                podsReady := input.status.ready
+                podsReady == podsRequired
+              }
+      rlinks:
+      - href: lula.dev
     - uuid: 0DA4FE66-9000-49DF-B896-938C94AAE89C
       title: Tempo
       rlinks:
@@ -1053,3 +1246,26 @@ component-definition:
       title: Big Bang Tempo package
       rlinks:
       - href: https://repo1.dso.mil/platform-one/big-bang/apps/sandbox/tempo
+    - uuid: b5e7867f-2453-4fb5-abfe-4246fed9de25
+      title: Lula Validation
+      description: |-
+        target:
+          provider: opa
+          domain: kubernetes
+          payload:
+            resourceRules:
+            - Group: apps
+              Version: v1
+              Resource: statefulsets
+              Namespaces: [tempo]
+            rego: |
+              package validate
+
+              validate {
+                input.kind == "Statefulset"
+                podsRequired := input.status.required
+                podsReady := input.status.ready
+                podsReady == podsRequired
+              }
+      rlinks:
+      - href: lula.dev

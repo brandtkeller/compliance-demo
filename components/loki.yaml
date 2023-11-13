@@ -34,6 +34,10 @@ component-definition:
         control-id: ac-5
         description: >-
           GEL implements RBAC to define system authorization and separation of duties
+        links:
+          - href: '#be2f7a63-6136-4ab9-851e-93e46d71eb0b'
+            rel: reference
+            text: Lula Validation
       - uuid: 642C8714-73E3-4A59-A89A-ACF2A36AAB6D
         control-id: ac-6
         description: >-
@@ -100,7 +104,7 @@ component-definition:
       title: Big Bang Loki package
       rlinks:
         - href: https://repo1.dso.mil/platform-one/big-bang/apps/sandbox/loki
-    - uuid: 
+    - uuid: be2f7a63-6136-4ab9-851e-93e46d71eb0b
       title: Lula Validation
       rlinks:
         - href: lula.dev

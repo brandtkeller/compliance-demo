@@ -35,7 +35,7 @@ component-definition:
         description: >-
           Kiali provides visibility into mTLS settings of all Istio traffic in the cluster.
         links:
-          - href: '#uuidhere'
+          - href: '#e50e9d2a-f8b5-47b2-b40f-3ecc84b5e29b'
             rel: reference
             text: Lula Validation
       
@@ -49,7 +49,7 @@ component-definition:
       title: Big Bang Kiali package
       rlinks:
         - href: https://repo1.dso.mil/platform-one/big-bang/apps/core/kiali
-    - uuid: 
+    - uuid: e50e9d2a-f8b5-47b2-b40f-3ecc84b5e29b
       title: Lula Validation
       rlinks:
         - href: lula.dev

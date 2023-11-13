@@ -42,6 +42,10 @@ component-definition:
           * all containers emitting to STDOUT or STDERR (captured  by container runtime translating container logs to /var/log/containers)
           * all kubernetes api server requests 
           * all events emitted by the kubelet
+        links:
+          - href: '#f1c83e1d-5643-4d27-b865-af2a86035e2e'
+            rel: reference
+            text: Lula Validation
       - uuid: 6DDD209A-87A4-48BF-B6B9-5925CC7CF4C3
         control-id: au-3
         description: >-
@@ -70,7 +74,7 @@ component-definition:
       title: Big Bang Promtail package
       rlinks:
         - href: https://repo1.dso.mil/platform-one/big-bang/apps/sandbox/promtail
-    - uuid: <newuuidhere>
+    - uuid: f1c83e1d-5643-4d27-b865-af2a86035e2e
       title: Lula Validation
       rlinks:
         - href: lula.dev

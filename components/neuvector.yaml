@@ -65,6 +65,10 @@ component-definition:
               control-id: ac-6.9
               description: >-
                 NeuVector logging access related audit events. https://open-docs.neuvector.com/reporting/reporting
+              links:
+                - href: '#17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4'
+                  rel: reference
+                  text: Lula Validation
             - uuid: 88d83b17-b238-48e5-b1d2-f500035c6dc0
               control-id: ac-6.10
               description: >-
@@ -175,7 +179,7 @@ component-definition:
         title: Big Bang NeuVector package
         rlinks:
           - href: https://repo1.dso.mil/platform-one/big-bang/apps/security-tools/neuvector
-      - uuid: 
+      - uuid: 17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4
         title: Lula Validation
         rlinks:
           - href: lula.dev

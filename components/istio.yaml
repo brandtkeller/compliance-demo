@@ -291,7 +291,7 @@ component-definition:
           # BigBang Implementation
           BigBang's default configuration deploys Istio-controlled ingress gateways and forces outbound traffic through egress proxies. So long as your developers write authorization policy for communication of the applications they deploy inside of the cluster, you comply with AC-4.
         links:
-          - href: '#uuidhere'
+          - href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
             rel: reference
             text: Lula Validation
       - uuid: 1D1E8705-F6EB-4A21-A24F-1DF7427BA491
@@ -882,7 +882,7 @@ component-definition:
       title: Big Bang Istio Operator package
       rlinks:
         - href: https://repo1.dso.mil/platform-one/big-bang/apps/core/istio-controlplane
-    - uuid: 
+    - uuid: 506c5fd6-42a1-4a27-8be4-ff8d305dcbb2
       title: Lula Validation
       rlinks:
         - href: lula.dev

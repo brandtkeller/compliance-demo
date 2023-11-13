@@ -45,6 +45,10 @@ component-definition:
         control-id: au-3.1
         description: >-
           Grafana has pre-configured dashboards showing the audit records from Cluster Auditor saved in Prometheus.
+        links:
+          - href: '#30c04002-fcd2-45e1-804f-1e5070e42a9f'
+            rel: reference
+            text: Lula Validation
       - uuid: B958C179-EE1F-40FC-BA2A-03B0072B20E6
         control-id: au-4
         description: >-
@@ -129,7 +133,7 @@ component-definition:
       title: Big Bang Monitoring package
       rlinks:
         - href: https://repo1.dso.mil/platform-one/big-bang/apps/core/monitoring
-    - uuid: <newuuidhere>
+    - uuid: 30c04002-fcd2-45e1-804f-1e5070e42a9f
       title: Lula Validation
       rlinks:
         - href: lula.dev

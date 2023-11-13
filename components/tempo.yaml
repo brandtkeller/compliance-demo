@@ -34,6 +34,10 @@ component-definition:
         control-id: si-4.4
         description: >-
           Jaeger is used, in conjunction with Istio configurations, to collect and aggregate network communications within the system.  This allows the moniotiring of inbound/outbound traffic and payloads within the deployed environment.
+        links:
+          - href: '#b5e7867f-2453-4fb5-abfe-4246fed9de25'
+            rel: reference
+            text: Lula Validation
       - uuid: 3C102ED9-4CE5-4AB1-ABE5-78426DF15BBE
         control-id: au-4
         description: >-
@@ -52,26 +56,26 @@ component-definition:
         title: Big Bang Tempo package
         rlinks:
           - href: https://repo1.dso.mil/platform-one/big-bang/apps/sandbox/tempo
-    - uuid: <newuuidhere>
-      title: Lula Validation
-      rlinks:
-        - href: lula.dev
-      description: >-
-        target:
-          provider: opa
-          domain: kubernetes
-          payload:
-            resourceRules:
-            - Group: apps
-              Version: v1
-              Resource: statefulsets
-              Namespaces: [tempo]
-            rego: |
-              package validate
+      - uuid: b5e7867f-2453-4fb5-abfe-4246fed9de25
+        title: Lula Validation
+        rlinks:
+          - href: lula.dev
+        description: >-
+          target:
+            provider: opa
+            domain: kubernetes
+            payload:
+              resourceRules:
+              - Group: apps
+                Version: v1
+                Resource: statefulsets
+                Namespaces: [tempo]
+              rego: |
+                package validate
 
-              validate {
-                input.kind == "Statefulset"
-                podsRequired := input.status.required
-                podsReady := input.status.ready
-                podsReady == podsRequired
-              }
+                validate {
+                  input.kind == "Statefulset"
+                  podsRequired := input.status.required
+                  podsReady := input.status.ready
+                  podsReady == podsRequired
+                }
