@@ -129,3 +129,26 @@ component-definition:
       title: Big Bang Monitoring package
       rlinks:
         - href: https://repo1.dso.mil/platform-one/big-bang/apps/core/monitoring
+    - uuid: <newuuidhere>
+      title: Lula Validation
+      rlinks:
+        - href: lula.dev
+      description: >-
+        target:
+          provider: opa
+          domain: kubernetes
+          payload:
+            resourceRules:
+            - Group: apps
+              Version: v1
+              Resource: deployments
+              Namespaces: [monitoring]
+            rego: |
+              package validate
+
+              validate {
+                input.kind == "Deployment"
+                podsRequired := input.status.required
+                podsReady := input.status.ready
+                podsReady == podsRequired
+              }

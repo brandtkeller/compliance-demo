@@ -100,3 +100,26 @@ component-definition:
       title: Big Bang Loki package
       rlinks:
         - href: https://repo1.dso.mil/platform-one/big-bang/apps/sandbox/loki
+    - uuid: 
+      title: Lula Validation
+      rlinks:
+        - href: lula.dev
+      description: >-
+        target:
+          provider: opa
+          domain: kubernetes
+          payload:
+            resourceRules:
+            - Group: apps
+              Version: v1
+              Resource: statefulsets
+              Namespaces: [logging-loki]
+            rego: |
+              package validate
+
+              validate {
+                input.kind == "Statefulset"
+                podsRequired := input.status.required
+                podsReady := input.status.ready
+                podsReady == podsRequired
+              }

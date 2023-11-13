@@ -175,3 +175,26 @@ component-definition:
         title: Big Bang NeuVector package
         rlinks:
           - href: https://repo1.dso.mil/platform-one/big-bang/apps/security-tools/neuvector
+      - uuid: 
+        title: Lula Validation
+        rlinks:
+          - href: lula.dev
+        description: >-
+          target:
+            provider: opa
+            domain: kubernetes
+            payload:
+              resourceRules:
+              - Group: apps
+                Version: v1
+                Resource: deployments
+                Namespaces: [neuvector]
+              rego: |
+                package validate
+
+                validate {
+                  input.kind == "Deployment"
+                  podsRequired := input.status.required
+                  podsReady := input.status.ready
+                  podsReady == podsRequired
+                }
