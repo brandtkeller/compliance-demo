@@ -1,5 +1,5 @@
 component-definition:
-  uuid: 6aebb1cc-7869-42b8-ba62-890260c71376
+  uuid: 057a3390-4cc2-44a4-a857-5d6a5894e226
   metadata:
     version: 0.0.1
     parties:
@@ -9,7 +9,7 @@ component-definition:
       links:
       - rel: website
         href: https://defenseunicorns.com
-    last-modified: "2023-11-13T18:33:50-05:00"
+    last-modified: "2023-11-13T23:44:39-05:00"
     oscal-version: 1.1.1
     title: DUBBD + UDS IDAM + UDS SSO
   components:
@@ -19,6 +19,10 @@ component-definition:
         by applications
       implemented-requirements:
       - uuid: 1822457D-461B-482F-8564-8929C85C04DB
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
         control-id: ac-3
         description: |-
           Istio implements with global configuration.
@@ -69,6 +73,12 @@ component-definition:
         - rel: reference
           text: Lula Validation
           href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
+        - rel: reference
+          text: Lula Validation
+          href: '#1761ac07-80dd-47d2-947e-09f67943b986'
+        - rel: reference
+          text: Lula Validation
+          href: '#68854323-4e62-4514-ac2b-9b0132a2b215'
         control-id: ac-4
         description: |-
           Istio implements with mission team configuration
@@ -175,11 +185,19 @@ component-definition:
           ```
           # BigBang Implementation BigBang's default configuration deploys Istio-controlled ingress gateways and forces outbound traffic through egress proxies. So long as your developers write authorization policy for communication of the applications they deploy inside of the cluster, you comply with AC-4.
       - uuid: 1D1E8705-F6EB-4A21-A24F-1DF7427BA491
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
         control-id: ac-4.4
         description: |-
           All encrypted HTTPS connections are terminated at the istio ingress gateway.
           AC-4.4 is not required for FedRAMP Moderate.
       - uuid: 366AAE60-AC24-4F48-BF63-4C0EB496CC9E
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
         control-id: ac-4.21
         description: |-
           Istio implements with mission team configuration
@@ -190,11 +208,19 @@ component-definition:
           # Detailed Instructions See examples in AC-4 above to configure runtime encryption as well as access control policies for services in the mesh as well as controlling how services communicate with dependencies outside of the information system.
           # BigBang Implementation So long as you're authoring service-to-service access policies for applications in the cluster, BigBang's default deployment satisfies these requirements.
       - uuid: CD1315BF-91FE-490A-B6A6-5616690D78A8
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
         control-id: ac-6.3
         description: |-
           Can be configured with an "admin" gateway to restrict access to applications that only need sysadmin access. Not standard in BB itself though.
           AC-6.3 is not required for FedRAMP Moderate.
       - uuid: 3772B5F3-34BC-4EAE-B739-8499F828C2F4
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
         control-id: ac-6.9
         description: |-
           Istio implements with global configuration
@@ -204,6 +230,10 @@ component-definition:
           Note that Istio does not log the specific individual identities that made the request, though it does log other identifying information like IP addresses used for access.
           # Detailed Instructions See AU-3 for information on configuring Istio's logs to include more (or less) information.
       - uuid: 6109E09A-8279-44AB-8CA4-2051AF895648
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
         control-id: ac-14
         description: |-
           Istio implements with mission team configuration
@@ -217,10 +247,18 @@ component-definition:
           # BigBang Implementation BigBang's default configuration of Istio ensures requests have authentication and authorization applied, including end-user credential validation via authservice. For this reason, all methods are protected and require authentication by default. Any methods exempted from the requirement for authentication need to explicitly author an authorization policy opting out of the platform's built-in checks.
           This configuration is only valid when applications opt in to authservice; the same guarantees cannot be made at the platform level for applications that do not use the platform SSO via authservice.
       - uuid: 9B6BA674-E6ED-4FB6-B216-3C8733F36411
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
         control-id: au-2
         description: Istio provides access logs for all HTTP network requests, including
           mission applications.
       - uuid: D3CBC898-F938-4FAA-B1B1-2597A69B5600
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
         control-id: au-3
         description: |-
           Istio implements with global configuration
@@ -244,6 +282,10 @@ component-definition:
           [Istio's docs](https://istio.io/latest/docs/tasks/observability/logs/access-log/#default-access-log-format) cover the default access log format string and configuring it in Istio. [Envoy's docs](https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage#command-operators) cover all the data Envoy can emit at runtime and which operators to add to the format string to emit them. The default format string covers most use cases, but can be augmented with additional information (or extra information removed) as needed.
           # BigBang Implementation BigBang ships with Istio's default logging, which is sufficient to satisfy organizational requirements. Therefore, Istio satisfies AU-3 requirements in BigBang deployments.
       - uuid: 630301DB-8730-4107-9E14-A1EEDE351122
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
         control-id: au-3.1
         description: |-
           Istio implements with global configuration
@@ -251,6 +293,10 @@ component-definition:
           # How does Istio help? Istio’s access logs can be configured to produce additional information as needed by the organization.
           # Detailed Instructions See AU-3 instructions above for configuring the access log string and links to documentation for all available data that can be emitted.
       - uuid: 6F2A603C-D240-47F1-9BED-334000E15011
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
         control-id: au-9
         description: |-
           Istio contributes but does not implement
@@ -259,6 +305,10 @@ component-definition:
           # Detailed Instructions See AU-3 for details on how to configure Istio’s logging output. A common pattern we see is using a log collection daemon – like Fluentd – to collect local logs and persist them in a datastore conforming to AU-9. In this case, your log collector’s configuration needs to match Istio’s log output configuration (they need to agree on a log file, standard out, or the collector needs to be configured to collect all output  – standard out as well as any files written).
           Kubernetes RBAC should be configured to allow only specific users access to the log files Envoy produces, ideally no users should have direct access and instead only access logs via the log ingestion system (like Splunk).
       - uuid: 6F2A603C-D240-47F1-9BED-334000E15011
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
         control-id: au-9.2
         description: |-
           Istio contributes but does not implement
@@ -266,6 +316,10 @@ component-definition:
           # How does Istio Help? See AU-9 above, but in short: ensure that Istio’s logging configuration aligns with your larger log collection pipeline. The log collection pipeline itself should implement the AU-9 controls required by the organization.
           # Detailed Instructions See AU-9 for information on preserving Istio’s logs conforming to AU-9 controls (including this one). In short, your log storage system itself should implement AU-9 (2) controls by persisting logs it stores on physically separate infrastructure.
       - uuid: 13EC0F18-2696-4407-8478-3AFE839D4764
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
         control-id: AU-12
         description: |-
           Istio implements with global configuration
@@ -279,6 +333,10 @@ component-definition:
           # Detailed Instructions See AU-3 for information on logging with Istio. As long as all information required by your organization’s policy for AU-2 a., then Istio satisfies AU-12 for your organization. Otherwise, Istio’s logs can be merged with logs from other data sources which together satisfy the requirements of AU-12 for the organization.
           # BigBang Implementation BigBang configures Istio to emit logs for all network traffic out of the box. These logs conform to the requirements of UA-3 (see that section for details). These logs cover the events listed in UA-2. Therefore Istio in BigBang satisfies AU-12.
       - uuid: D01F6B2D-F18E-47E9-94DC-95C0B5675E13
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
         control-id: cm-5
         description: |-
           Istio contributes but does not implement
@@ -288,6 +346,10 @@ component-definition:
           Organizations should implement an infrastructure-as-code approach for managing Istio, treating its configuration just like application code changes. Humans should not be allowed to change the running system’s configuration, and code review processes should govern what changes are allowed to the infrastructure configuration codebase. Istio’s configuration should be managed by the same CM-5 conformant practices.
           # BigBang Implementation BigBang implements CM-5 controls by implementing infrastructure as code practices, configuring Kubernetes RBAC to prevent humans from authoring configuration and allowing only continuous delivery systems (Flux, by default) to author runtime configuration. Since all configuration is managed in this CM-5 conformant way, Istio’s configuration is controlled in a CM-5 conformant way.
       - uuid: 618C16DE-82D0-46FF-9A3A-D260D5F4F654
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
         control-id: cm-6
         description: |-
           Istio contributes but does not implement
@@ -301,6 +363,10 @@ component-definition:
           # Detailed Instructions AC-3, AC-4, AU-3, SC-7(5) for specific configuration recommendations and patterns in this document. See the Istio in Production guide for detailed installation and per-Mission-Team settings that should be implemented for a best practice secure deployment, but do not directly contribute to an SP 800-53 control.
           # BigBang Implementation Tetrate helps maintain and periodically audits BigBang’s Istio configurations to ensure they implement best practice defaults.
       - uuid: 6370B2DA-1E35-4916-8591-91FB9EDBE72B
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
         control-id: cm-8
         description: |-
           Istio implements with global configuration
@@ -323,6 +389,10 @@ component-definition:
           # Detailed Instructions Istio provides this inventory of the information system as a byproduct of facilitating service discovery for all applications in the information system. As a result, no special configuration or settings are required. A deployment of a software to visualize the inventory – like Kiali or Tetrate Service Bridge – is useful for getting the full value of Istio’s inventory for operations.
           # BigBang Implementation BigBang’s Istio deployment satisfies this requirement. Further, BigBang includes Kiali, providing an easy view for this data.
       - uuid: AB9189FF-34E2-4D7E-8018-EB346C7AE967
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
         control-id: cm-8.1
         description: |-
           Istio implements with global configuration
@@ -331,11 +401,19 @@ component-definition:
           # Detailed Instructions Istio updates its inventory continuously, therefore implements CM-8 (1). CM-8 has more details.
           # BigBang Implementation BigBang’s Istio deployment satisfies this requirement automatically.
       - uuid: A740C741-23B4-4ED9-937C-E0276A9B92EE
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
         control-id: cm-8.2
         description: |-
           Provides an inventory of all workloads (including mission apps) in the service mesh, viewable in Kiali. The inventory is automatically and continuously updated.
           CM-8.2 is not required for FedRAMP Moderate.
       - uuid: 61615706-5395-4168-8AD0-5C4ACBCC5D7E
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
         control-id: ia-2
         description: |-
           Istio implements with mission team configuration
@@ -345,6 +423,10 @@ component-definition:
           # Detailed Instructions See AC-3 for configuring the mesh to authenticate end user credentials. See AC-4 for configuring the mesh to authenticate workloads (processes) in the information system.
           # BigBang Implementation BigBang deploys authservice as part of its default configuration. Istio implements IA-2 for all applications that opt in to using authservice because BigBangs configuration prohibits all traffic that is not authenticated in that case. See AC-14 for more information on authservice in BigBang.
       - uuid: 3004BB1D-0F50-48F1-ABFE-40CC522B1C15
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
         control-id: ia-4
         description: |-
           Istio contributes but does not implement
@@ -367,6 +449,10 @@ component-definition:
           # Detailed Instructions As long as peer authentication is enabled (see AC-4), Istio satisfies IA-4 a–c. automatically and without configuration. Kubernetes level controls are required for implementing IA-4 d. and e. If Kubernetes satisfies IA-4 controls, then Istio satisfies IA-4 controls for runtime identities of entities within the information system.
           # BigBang Implementation BigBang implements service account management practices in accordance with IA-4, therefore BigBang’s Istio identities for mission applications satisfy IA-4 requirements.
       - uuid: 3FC44715-6068-44E5-9079-641D3FAA6A14
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
         control-id: ia-7
         description: |-
           Istio implements with global configuration
@@ -376,11 +462,19 @@ component-definition:
           # Detailed Instructions Deploy the FIPS build of the Tetrate Istio Distribution, from Iron Bank or Tetrate directly. This version of Istio is built against BoringSSL ([CMVP Certificate #3678](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/3678)) and verified by a NIST-accredited third party via runtime and code audit. Tetrate can produce this attestation upon request for TID customers.
           # BigBang Implementation BigBang uses the FIPS builds from the Tetrate Istio Distribution by default, therefore uses the best available cryptographic libraries by default.
       - uuid: FE110D6B-CCB5-41E8-B2DE-287ED843D417
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
         control-id: ia-9
         description: |-
           Istio registers all workload identities in the service mesh. The identity is transmitted in the mTLS certificate when establishing communication between services, and is validated by Istio sidecars.
           IA-9 is not required for FedRAMP Moderate.
       - uuid: 82AC8314-BDA8-4A4D-B54D-4A0233563C7C
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
         control-id: sc-1
         description: |-
           Istio contributes but does not implement
@@ -396,6 +490,10 @@ component-definition:
           # Detailed Instructions This document provides a lot of the data required to incorporate Istio into your system and communications protection policy. CM-6 gives more insight into best-practice Istio configurations as well as other source documents you should consider when building your security policy incorporating Istio
           # BigBang Implementation BigBang provides extensive documentation for its components [here](TODO). The overall security policy is documented [here](TODO).
       - uuid: 986E0C8B-6956-42AF-804E-FDB366DE6EDC
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
         control-id: sc-7
         description: |-
           Istio implements with global configuration
@@ -413,6 +511,10 @@ component-definition:
           It’s important to note that in accordance with a zero trust philosophy, Istio supports the same monitoring and control throughout your infrastructure as at the boundary. While Istio enables controls to be implemented at the boundary, it also allows equivalent controls to be enforced at every application instance in the information system. This helps bind attackers in space by limiting their ability to pivot once inside the protected boundary. In effect, it moves the boundary to each individual application instance. This is one of the biggest benefits of the mesh, and why it is key to achieving a zero trust system at runtime.
           # BigBang Implementation BigBang deployments conform to AC-3, AC-4, as well as AU-12 out of the box. This satisfies the SC-7 a. as well as SC-7 c. When combined with a standard network topology (like deploying BigBang into EKS on GovCloud), combined with BigBang’s default CNI, you also achieve SC-7 b.
       - uuid: CB84CC94-BBAA-4177-9836-5AD0DE3A9937
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
         control-id: sc-7.4
         description: |-
           Istio implements with global configuration
@@ -433,6 +535,10 @@ component-definition:
           # Detailed Instructions See the instructions for AC-3, AC-4, and AC-4 (21) for guidance on configuring Istio for boundary protection, as well as internal protection, for controls SC-7 (4) a-c. Istio’s configuration can aid in documenting traffic flow exceptions, but will need to be augmented to implement SC-7 (4) d.
           # BigBang Implementation BigBang’s default deployment, including CNAP, satisfies SC-7 (4) a-c out of the box (given you implement access control policy for your mission applications, per the guidance in AC-3 and AC-4).
       - uuid: CB84CC94-BBAA-4177-9836-5AD0DE3A9937
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
         control-id: sc-7.5
         description: |-
           Istio implements with mission team configuration
@@ -492,6 +598,10 @@ component-definition:
           Taken together, Istio implements a default deny with traffic allowed only by explicit configuration, satisfying SC-7 (5) on behalf of applications in the mesh.
           # BigBang Implementation BigBang’s default configuration enforces deny by default behavior for ingress and egress. Developers building mission applications writing their own access policy (per AC-4) must write policy in the “allow with positive matching” style. If they do so, the entire system conforms to SC-7 (5).
       - uuid: CB84CC94-BBAA-4177-9836-5AD0DE3A9937
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
         control-id: sc-8
         description: |-
           Istio implements with global configuration
@@ -500,6 +610,10 @@ component-definition:
           # Detailed Instructions Follow the instructions in AC-4 for enforcing strict mTLS. Ensure you’re deploying the Tetrate Istio Distribution’s FIPS build for encryption that conforms to FIPS 140-2 requirements. Certificates attesting to that build’s verification by a NIST-approved third party auditor are available upon request for TID and TSB customers.
           # BigBang Implementation BigBang deploys the FIPS builds of TID by default, and enforce STRICT mTLS between components through configuration. Therefore, BigBang’s deployment of Istio implements SC-8 on behalf of applications deployed in the platform.
       - uuid: 69415B92-0490-4A14-9E0F-E1EE61951F9C
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
         control-id: sc-8.1
         description: |-
           Istio implements with global configuration
@@ -508,6 +622,10 @@ component-definition:
           # Detailed Instructions Follow the instructions in AC-4 for enforcing strict mTLS. Ensure you’re deploying the Tetrate Istio Distribution’s FIPS build for encryption that conforms to FIPS 140-2 requirements. Certificates attesting to that build’s verification by a NIST-approved third party auditor are available upon request for TID and TSB customers.
           # BigBang Implementation BigBang deploys the FIPS builds of TID by default, and enforce STRICT mTLS between components through configuration. Therefore, BigBang’s deployment of Istio implements SC-8 (1) on behalf of applications deployed in the platform.
       - uuid: B6B9D143-6936-4C33-BF2A-3C2B1F282B25
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
         control-id: sc-13
         description: |-
           Istio implements with global configuration
@@ -554,11 +672,19 @@ component-definition:
       description: Controls implemented by Kyverno for inheritance by applications
       implemented-requirements:
       - uuid: 7D019F27-294F-4759-A44F-BA6E15370ED8
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#8e6d1dfa-ba75-4263-851a-946472b5945a'
         control-id: cm-4
         description: The CLI can be used in CI/CD pipelines to assist with the resource
           authoring process to ensure they conform to standards prior to them being
           deployed.
       - uuid: 91302CE7-181E-4464-9E26-2A1E42D8909F
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#8e6d1dfa-ba75-4263-851a-946472b5945a'
         control-id: cm-4.1
         description: Use of auditing validationFailureAction state in a test environment
           would allow changes to be tested against policies without blocking development.
@@ -574,22 +700,42 @@ component-definition:
           will allow for explicit deviations approved by policies/configurations declared
           in git.
       - uuid: 6e1f05fc-3eab-45a2-9b16-d2c5acfed20b
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#8e6d1dfa-ba75-4263-851a-946472b5945a'
         control-id: cm-7
         description: Kyverno can enact policies that prevent the use of specific service
           types (IE, LoadBalancer or NodePort)
       - uuid: C14EA5F8-3926-4BB4-BE44-B134513F143D
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#8e6d1dfa-ba75-4263-851a-946472b5945a'
         control-id: cm-7.5
         description: Policies can be written to enact deny-all for workloads unless
           exceptions are identified
       - uuid: 69A5689A-DAA5-48F6-9953-AEF482B0FEE0
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#8e6d1dfa-ba75-4263-851a-946472b5945a'
         control-id: cm-8.3
         description: Policies can be written to validate all software workloads can
           be verified against a signature.
       - uuid: D0CEE97B-A884-4ECB-B56E-34048148144C
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#8e6d1dfa-ba75-4263-851a-946472b5945a'
         control-id: cm-8.3
         description: Policies can be written to restrict the software that can be
           installed by cluster users.
       - uuid: CBCB72ED-3161-4A6F-B522-FB7082E6E380
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#8e6d1dfa-ba75-4263-851a-946472b5945a'
         control-id: sr-11
         description: Cluster-Wide Policies can be written to require all images be
           verified through signature verification.
@@ -617,52 +763,108 @@ component-definition:
         description: GEL implements RBAC to define system authorization and separation
           of duties
       - uuid: 642C8714-73E3-4A59-A89A-ACF2A36AAB6D
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#be2f7a63-6136-4ab9-851e-93e46d71eb0b'
         control-id: ac-6
         description: GEL implements RBAC to employ principle of least privilege
       - uuid: 7BA2A7E8-D7AA-4229-8A32-53DE9147B4A8
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#be2f7a63-6136-4ab9-851e-93e46d71eb0b'
         control-id: ac-6.1
         description: GEL implements RBAC to employ principle of least privilege
       - uuid: 02388229-428F-4896-92A1-AE93210057EC
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#be2f7a63-6136-4ab9-851e-93e46d71eb0b'
         control-id: ac-6.9
         description: Privileged events that modify the application are logged in the
           application itself
       - uuid: 1A3EA794-360A-492B-8FEB-EE666FCE2010
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#be2f7a63-6136-4ab9-851e-93e46d71eb0b'
         control-id: ac-6.10
         description: GEL layers an additional RBAC layer that prohibits non-privileged
           users from executing privileged functions
       - uuid: E3221BCB-EFF6-4E6C-9856-3C228735A7D2
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#be2f7a63-6136-4ab9-851e-93e46d71eb0b'
         control-id: ac-21
         description: GEL layers an additional RBAC layer that prohibits non-privileged
           users from executing privileged functions
       - uuid: AB29AE94-C867-4BBE-AAB4-8BF21DBD31D9
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#be2f7a63-6136-4ab9-851e-93e46d71eb0b'
         control-id: au-4
         description: Uses scalable object storage
       - uuid: B552D3B6-0C38-4B59-9D97-FB1D748EE8EA
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#be2f7a63-6136-4ab9-851e-93e46d71eb0b'
         control-id: au-6
         description: Provides audit record query and analysis capabilities. Organization
           will implement record review and analysis
       - uuid: D45A7DA4-A9F9-46CD-AFA4-991824D2BAF5
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#be2f7a63-6136-4ab9-851e-93e46d71eb0b'
         control-id: au-6.1
         description: Provides audit record query and analysis capabilities. Organization
           will implement record review and analysis
       - uuid: 9CCC7BF3-2710-4E00-BC22-2C272FCEC771
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#be2f7a63-6136-4ab9-851e-93e46d71eb0b'
         control-id: au7.1
         description: Loki provides an API for retrieving and filtering logs.
       - uuid: 80BCE3BD-97D2-4525-A80C-4759F3B756AD
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#be2f7a63-6136-4ab9-851e-93e46d71eb0b'
         control-id: au-9
         description: Access to metrics can be restricted to org-defined personnel
           behind a private endpoint and not given to mission owners.
       - uuid: E3771199-CBA3-46D0-8632-F745E9B6BFAE
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#be2f7a63-6136-4ab9-851e-93e46d71eb0b'
         control-id: au-9.2
         description: Supports any object storage
       - uuid: 4D71EA77-3904-4CE4-AFDC-5123C88A8BD7
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#be2f7a63-6136-4ab9-851e-93e46d71eb0b'
         control-id: au-9.4
         description: Enterprise version (GEL) implements RBAC
       - uuid: D75DF925-E6CE-49D8-8AB0-BD07DAF559E9
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#be2f7a63-6136-4ab9-851e-93e46d71eb0b'
         control-id: au-11
         description: Can configure audit record storage retention policy for defined
           periods of time via the store(s) Loki is configured to use.
       - uuid: 0833500E-517A-4F52-BD2F-64DE658E22C4
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#be2f7a63-6136-4ab9-851e-93e46d71eb0b'
         control-id: au-12.1
         description: Provides time-series event compilation capabilities
       uuid: 5108E5FC-C45F-477B-A542-9C5611A92485
@@ -681,11 +883,31 @@ component-definition:
       description: Controls implemented by authservice for inheritance by applications
       implemented-requirements:
       - uuid: B5B39044-B02A-4655-B466-7586B24963A1
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#30c04002-fcd2-45e1-804f-1e5070e42a9f'
+        - rel: reference
+          text: Lula Validation
+          href: '#b8353b85-4bec-49f0-bdc0-713ebac483e6'
+        - rel: reference
+          text: Lula Validation
+          href: '#494a1c21-db5f-4049-9015-b00dc98f3ace'
         control-id: ac-6.9
         description: 'Privileged events, including updating the deployment of an application,
           or use of privileged containers are collected as metrics by prometheus and
           displayed by Grafana '
       - uuid: 8AE237CE-E7FF-42FE-B79F-2DF106B0CC09
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#30c04002-fcd2-45e1-804f-1e5070e42a9f'
+        - rel: reference
+          text: Lula Validation
+          href: '#b8353b85-4bec-49f0-bdc0-713ebac483e6'
+        - rel: reference
+          text: Lula Validation
+          href: '#494a1c21-db5f-4049-9015-b00dc98f3ace'
         control-id: au-2
         description: "API endpoints suitable for capturing application level metrics
           are present on each of the supported applications running as containers.
@@ -700,77 +922,233 @@ component-definition:
         - rel: reference
           text: Lula Validation
           href: '#30c04002-fcd2-45e1-804f-1e5070e42a9f'
+        - rel: reference
+          text: Lula Validation
+          href: '#b8353b85-4bec-49f0-bdc0-713ebac483e6'
+        - rel: reference
+          text: Lula Validation
+          href: '#494a1c21-db5f-4049-9015-b00dc98f3ace'
         control-id: au-3.1
         description: Grafana has pre-configured dashboards showing the audit records
           from Cluster Auditor saved in Prometheus.
       - uuid: B958C179-EE1F-40FC-BA2A-03B0072B20E6
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#30c04002-fcd2-45e1-804f-1e5070e42a9f'
+        - rel: reference
+          text: Lula Validation
+          href: '#b8353b85-4bec-49f0-bdc0-713ebac483e6'
+        - rel: reference
+          text: Lula Validation
+          href: '#494a1c21-db5f-4049-9015-b00dc98f3ace'
         control-id: au-4
         description: Prometheus is the log aggregator for audit logs since it is used
           to scrape/collect violations from ClusterAuditor.  The storage capability
           can be configured in prometheus to use PVCs to ensure metrics have log retention
           complioance with the org-defined audit-log retention requirements
       - uuid: 01975AD9-8F46-48EB-81F1-1DDEB6DB0882
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#30c04002-fcd2-45e1-804f-1e5070e42a9f'
+        - rel: reference
+          text: Lula Validation
+          href: '#b8353b85-4bec-49f0-bdc0-713ebac483e6'
+        - rel: reference
+          text: Lula Validation
+          href: '#494a1c21-db5f-4049-9015-b00dc98f3ace'
         control-id: au-5
         description: Grafana and Alertmanager can both alert on prometheus metrics
           and alerts can be created in either to support this control
       - uuid: FA95745B-E13E-4153-ABEE-1970C315A381
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#30c04002-fcd2-45e1-804f-1e5070e42a9f'
+        - rel: reference
+          text: Lula Validation
+          href: '#b8353b85-4bec-49f0-bdc0-713ebac483e6'
+        - rel: reference
+          text: Lula Validation
+          href: '#494a1c21-db5f-4049-9015-b00dc98f3ace'
         control-id: au-5.1
         description: Alertmanager has pre-built alerts for PVC storage thresholds
           that would fire for PVCs supporting prometheus metrics storage
       - uuid: 5D45F4A3-A37F-451D-9670-8FA9DFD1355F
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#30c04002-fcd2-45e1-804f-1e5070e42a9f'
+        - rel: reference
+          text: Lula Validation
+          href: '#b8353b85-4bec-49f0-bdc0-713ebac483e6'
+        - rel: reference
+          text: Lula Validation
+          href: '#494a1c21-db5f-4049-9015-b00dc98f3ace'
         control-id: au-5.2
         description: |-
           Alertmanager has pre-build alerts for failed pods that would show when ClusterAuditor is not processeing events, or  prometheus is unable to scrape events.
           Prometheus also has a deadman's alert to ensure end users are seeing events from prometheus as part of its configuration
       - uuid: 603A45C9-E730-4321-B8AE-60D048E14BAB
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#30c04002-fcd2-45e1-804f-1e5070e42a9f'
+        - rel: reference
+          text: Lula Validation
+          href: '#b8353b85-4bec-49f0-bdc0-713ebac483e6'
+        - rel: reference
+          text: Lula Validation
+          href: '#494a1c21-db5f-4049-9015-b00dc98f3ace'
         control-id: au-6.1
         description: Cluster Audtitor Events/Alerts could be exported from Prometheus
           to an external system.  Integration for specific tooling would need to be
           completed by end user
       - uuid: 92D322C1-B4D3-4842-8B06-538218AECA7D
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#30c04002-fcd2-45e1-804f-1e5070e42a9f'
+        - rel: reference
+          text: Lula Validation
+          href: '#b8353b85-4bec-49f0-bdc0-713ebac483e6'
+        - rel: reference
+          text: Lula Validation
+          href: '#494a1c21-db5f-4049-9015-b00dc98f3ace'
         control-id: au-6.3
         description: Aggregating cluster auditor events across multiple sources (clusters)
           is possible with a multi-cluster deployment of prometheus/grafana
       - uuid: BB0DF859-827F-4E3A-8C61-DEDCE4A9B3EB
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#30c04002-fcd2-45e1-804f-1e5070e42a9f'
+        - rel: reference
+          text: Lula Validation
+          href: '#b8353b85-4bec-49f0-bdc0-713ebac483e6'
+        - rel: reference
+          text: Lula Validation
+          href: '#494a1c21-db5f-4049-9015-b00dc98f3ace'
         control-id: au-6.5
         description: Cluster Auditor's audit data is consolidated with system monitoring
           tooling (node exporters) for consolidated view to enhance inappropriate
           or unusual activity
       - uuid: 77C00727-4195-45A8-8BB6-534AE5889E71
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#30c04002-fcd2-45e1-804f-1e5070e42a9f'
+        - rel: reference
+          text: Lula Validation
+          href: '#b8353b85-4bec-49f0-bdc0-713ebac483e6'
+        - rel: reference
+          text: Lula Validation
+          href: '#494a1c21-db5f-4049-9015-b00dc98f3ace'
         control-id: au-6.6
         description: Cluster Auditor data in prometheus would enable this, but would
           require prometheus to also obtain access to physical metrics.
       - uuid: 6F291DF6-5613-46DF-9D9A-AC7CEDFF4A7B
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#30c04002-fcd2-45e1-804f-1e5070e42a9f'
+        - rel: reference
+          text: Lula Validation
+          href: '#b8353b85-4bec-49f0-bdc0-713ebac483e6'
+        - rel: reference
+          text: Lula Validation
+          href: '#494a1c21-db5f-4049-9015-b00dc98f3ace'
         control-id: au-7
         description: Grafana is configured with a pre-built dashboard for policy violations
           that displays data collected by Cluster Auditor
       - uuid: 54D583CE-DB4A-4C03-902D-9A37949F4820
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#30c04002-fcd2-45e1-804f-1e5070e42a9f'
+        - rel: reference
+          text: Lula Validation
+          href: '#b8353b85-4bec-49f0-bdc0-713ebac483e6'
+        - rel: reference
+          text: Lula Validation
+          href: '#494a1c21-db5f-4049-9015-b00dc98f3ace'
         control-id: au-7.1
         description: Grafana is configured with a pre-built dashboard for policy violations
           that displays data collected by Cluster Auditor
       - uuid: 91D9D559-1666-420B-9F2B-240BC7CD1A3E
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#30c04002-fcd2-45e1-804f-1e5070e42a9f'
+        - rel: reference
+          text: Lula Validation
+          href: '#b8353b85-4bec-49f0-bdc0-713ebac483e6'
+        - rel: reference
+          text: Lula Validation
+          href: '#494a1c21-db5f-4049-9015-b00dc98f3ace'
         control-id: au-8
         description: Prometheus stores all data as timeseries data, so the timestamps
           of when those violitions were present is part of the datastream
       - uuid: 2D7AB4A4-1AE7-45A6-BC56-9FBB6402AD98
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#30c04002-fcd2-45e1-804f-1e5070e42a9f'
+        - rel: reference
+          text: Lula Validation
+          href: '#b8353b85-4bec-49f0-bdc0-713ebac483e6'
+        - rel: reference
+          text: Lula Validation
+          href: '#494a1c21-db5f-4049-9015-b00dc98f3ace'
         control-id: au-9
         description: Grafana has the ability to provide Role Based Access Control
           to limit the data sources that end users can view by leveraging an identity
           provider.  Grafana can also limit users to subsets of metrics within a datasource
           by the use of Label Based Acces Control when using Grafana Enterprise.
       - uuid: 58B88EBD-ABAD-4505-9243-809D8DEFAEF7
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#30c04002-fcd2-45e1-804f-1e5070e42a9f'
+        - rel: reference
+          text: Lula Validation
+          href: '#b8353b85-4bec-49f0-bdc0-713ebac483e6'
+        - rel: reference
+          text: Lula Validation
+          href: '#494a1c21-db5f-4049-9015-b00dc98f3ace'
         control-id: au-9.2
         description: Prometheus can scrape external components outside of the system,
           but this configuration is not easily supported as part of the current big
           bang configuration of ClusterAuditor since external access to ClusterAuditor
           metrics is not exposed via Istio
       - uuid: 8178202C-6E6C-415A-8B0D-C486AAC85B3A
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#30c04002-fcd2-45e1-804f-1e5070e42a9f'
+        - rel: reference
+          text: Lula Validation
+          href: '#b8353b85-4bec-49f0-bdc0-713ebac483e6'
+        - rel: reference
+          text: Lula Validation
+          href: '#494a1c21-db5f-4049-9015-b00dc98f3ace'
         control-id: au-9.4
         description: Grafana has the ability to provide Role Based Access Control
           to limit the data sources that end users can view by leveraging an identity
           provider.  Grafana can also limit users to subsets of metrics within a datasource
           by the use of Label Based Acces Control when using Grafana Enterprise.
       - uuid: A471F648-C22C-4217-A3BA-1063E80B4BA3
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#30c04002-fcd2-45e1-804f-1e5070e42a9f'
+        - rel: reference
+          text: Lula Validation
+          href: '#b8353b85-4bec-49f0-bdc0-713ebac483e6'
+        - rel: reference
+          text: Lula Validation
+          href: '#494a1c21-db5f-4049-9015-b00dc98f3ace'
         control-id: au-12.1
         description: Compatible metrics endpoints emitted from each application is
           compiled by Prometheus and displayed through Grafana with associated timestamps
@@ -791,33 +1169,65 @@ component-definition:
       description: Controls implemented by NeuVector for inheritance by applications
       implemented-requirements:
       - uuid: 7d524c68-a463-4283-9f50-a4f914b0feb9
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4'
         control-id: ac-2
         description: NeuVector supports internal user accounts and roles in addition
           to LDAP and SSO for providing RBAC access. https://open-docs.neuvector.com/configuration/users
       - uuid: c32ebef9-831b-4662-9172-7cec6697b1e5
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4'
         control-id: ac-2.1
         description: NeuVector supports internal user accounts and roles in addition
           to LDAP and SSO for providing RBAC access. https://open-docs.neuvector.com/configuration/users
       - uuid: 73c55835-6833-48d8-91a8-040815a2ccd9
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4'
         control-id: ac-2.3
         description: NeuVector logging access related audit events. https://open-docs.neuvector.com/reporting/reporting
       - uuid: 56ab01ce-a2eb-4a9b-9e77-4b598c0c9230
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4'
         control-id: ac-3
         description: NeuVector supports internal user accounts and roles in addition
           to LDAP and SSO for providing RBAC access. https://open-docs.neuvector.com/configuration/users
       - uuid: de3fa1f1-b7ce-43a4-97c7-53a15f9dadaf
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4'
         control-id: ac-6
         description: NeuVector supports mapping internal user accounts and roles in
           addition to LDAP and SSO roles or groups for providing RBAC access. https://open-docs.neuvector.com/configuration/users
       - uuid: 4a200112-0c9b-4fae-a9dd-45c8d9a70886
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4'
         control-id: ac-6.1
         description: NeuVector supports mapping internal user accounts and roles in
           addition to LDAP and SSO roles or groups for providing RBAC access. https://open-docs.neuvector.com/configuration/users
       - uuid: 37d720fa-d135-49b8-b423-00ad9f77a92d
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4'
         control-id: ac-6.3
         description: NeuVector supports mapping internal user accounts and roles in
           addition to LDAP and SSO roles or groups for providing RBAC access. https://open-docs.neuvector.com/configuration/users
       - uuid: 08c37e6f-024a-4996-a3e1-8f57ac9e1f9d
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4'
         control-id: ac-6.5
         description: NeuVector supports mapping internal user accounts and roles in
           addition to LDAP and SSO roles or groups for providing RBAC access. https://open-docs.neuvector.com/configuration/users
@@ -829,107 +1239,207 @@ component-definition:
         control-id: ac-6.9
         description: NeuVector logging access related audit events. https://open-docs.neuvector.com/reporting/reporting
       - uuid: 88d83b17-b238-48e5-b1d2-f500035c6dc0
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4'
         control-id: ac-6.10
         description: NeuVector supports mapping internal user accounts and roles in
           addition to LDAP and SSO roles or groups for providing RBAC access. https://open-docs.neuvector.com/configuration/users
       - uuid: 53c7d03b-80f7-42e5-b300-dca43b2b8f05
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4'
         control-id: au-2
         description: NeuVector logging access related audit events. https://open-docs.neuvector.com/reporting/reporting
       - uuid: 4f50b73f-ff6a-4ce0-8139-dbae4f95b0d5
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4'
         control-id: au-3
         description: NeuVector logging access related audit events. https://open-docs.neuvector.com/reporting/reporting
       - uuid: 297107b6-bbe9-44e0-a36a-e5d7798f8ddd
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4'
         control-id: au-4
         description: NeuVector can scale elastically based upon actual workload demands
           to allocate audit log storage capacity
       - uuid: 88910426-f4a5-4d7d-a37f-7e8c088c49ff
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4'
         control-id: au-8
         description: NeuVector logging related audit events contain timestamps. https://open-docs.neuvector.com/reporting/reporting
       - uuid: 2f7d8d6c-0487-4df9-9fae-68ede0fd75e9
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4'
         control-id: au-12
         description: NeuVector keeps audits of the generation of records.
       - uuid: 15d6de3a-14ef-4efd-ab27-329a9adc4979
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4'
         control-id: ca-7
         description: NeuVector continually monitors kubernetes environments and container
           images to detect misconfigurations, advanced network threats, and vulnerable
           hosts with all attempts to exploit a vulnerability documented.
       - uuid: 5f04cfad-8aac-4809-970c-aca8067533fd
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4'
         control-id: cm-6
         description: NeuVector is configured using Helm Charts. Default settings can
           be found https://repo1.dso.mil/big-bang/product/packages/neuvector/-/tree/main/chart
       - uuid: f1425616-8ebb-48a9-a774-3d1a20c2d74a
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4'
         control-id: cm-7
         description: NeuVector is configured securely and only access to required
           ports are available. https://repo1.dso.mil/big-bang/product/packages/neuvector/-/tree/main/chart
       - uuid: 48d2f36e-9c1e-475c-9848-ee17f0fb27b3
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4'
         control-id: ra-1
         description: NeuVector helps with creating policies and procedures through
           its comprehensive visibility, threat prevention, compliance assurance, and
           data protection in a consistent manner across multi-cloud environments
       - uuid: 2fcd935e-dba4-4f4a-bdab-95c2dadba68e
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4'
         control-id: ra-2
         description: NeuVector is a Kubernetes native security platform that categorizes
           the information it processes, stores, and transmits
       - uuid: 83f96c59-56c0-42cc-9f72-4732fdfc73d2
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4'
         control-id: ra-3
         description: NeuVector is a a Kubernetes native security platform that identifies
           threats and vulnerabilities in the system with Vulnerability Protection
           Profiles
       - uuid: 6f18f2f4-3796-4189-8bfa-57d5b7bb10e7
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4'
         control-id: ra-5
         description: NeuVector is Kubernetes and container security tool. NeuVector
           will scan containers for vulnerabilities in addition to continuous monitoring
           for active threats. https://open-docs.neuvector.com/navigation/navigation
       - uuid: c458f99a-78fd-4322-91e9-034b51f3e414
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4'
         control-id: ra-5.2
         description: NeuVector container scanning vulnerability database is updated
           frequently. https://open-docs.neuvector.com/scanning/scanning/vulnerabilities
       - uuid: 3ae44f3f-b44a-44e6-8752-e494b82e0ded
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4'
         control-id: ra-5.3
         description: NeuVector container scanning configurations depth can be modified.
           https://open-docs.neuvector.com/scanning/scanning/vulnerabilities
       - uuid: 142a0165-16de-4a5b-a151-cc646a5a943c
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4'
         control-id: ra-5.6
         description: NeuVector container scans are stored and can be used for comparison
           over time. https://open-docs.neuvector.com/scanning/scanning/vulnerabilities
       - uuid: 0efccbc4-022d-463b-bbc2-e63125a599d0
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4'
         control-id: ra-5.8
         description: NeuVector container scans include a attack tree to visualize
           additional risks with a given vulnerability. https://open-docs.neuvector.com/scanning/scanning/vulnerabilities
       - uuid: dfe42cc6-74e2-48e8-985f-c4846a9b5703
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4'
         control-id: ra-10
         description: NeuVector allows for monitoring for malicious activity based
           on security policy rules. https://open-docs.neuvector.com/policy/overview
       - uuid: 8974dd78-8695-41ed-b68e-92e3105ff414
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4'
         control-id: sa-2
         description: NeuVector scanners can scale elastically based upon actual workload
           demands in a consistent manner across multi-cloud environments
       - uuid: 4a59d604-10f9-4407-b062-1661063d760d
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4'
         control-id: sa-3
         description: NeuVector's CI/CD capabilities help incorporate information security,
           privacy risk management, and privacy roles into development.
       - uuid: 464b4f53-61e7-49a0-8dcf-243118909cfa
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4'
         control-id: sa-8
         description: NeuVector powerful CI/CD capabilities allow security teams can
           set policies that act as system quality control gates that developers must
           follow for builds
       - uuid: 4daa5851-1f8d-41fc-aabe-fafcb97d8b84
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4'
         control-id: sc-7
         description: NeuVector monitors all communications to external interfaces
           by only connecting to external networks through managed interfaces and utilizes
           whitelists and blacklists for rules at Layer 7.
       - uuid: 16c820af-4216-437c-a5e2-356dde1fb626
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4'
         control-id: sc-8
         description: Data in transit is protected using a TLS connection and secured
           between components within the data center using an internal certificate
           until it is terminated at the application node. This ensures that data in
           transit is encrypted using SSL
       - uuid: 6f165f1a-2f91-4ac6-8eee-fe729a715952
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4'
         control-id: si-4
         description: NeuVector continually monitors your Kubernetes environments to
           detect misconfigurations, advanced network threats, and vulnerable hosts
           with all attempts to exploit a vulnerability documented.
       - uuid: e56438e7-b572-450a-b5a9-dc9a4cb93665
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#17d6f48a-1a3f-4178-ba0c-7ffc9ef6c7c4'
         control-id: si-5
         description: NeuVector correlates configuration data with user behavior and
           network traffic to provide context around misconfigurations and threats
@@ -952,6 +1462,10 @@ component-definition:
       description: Controls implemented by Promtail for inheritance by applications
       implemented-requirements:
       - uuid: 1E11CEA9-CE73-45F0-BE08-D16B521B8E7E
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#f1c83e1d-5643-4d27-b865-af2a86035e2e'
         control-id: ac-6.9
         description: Promtail can be configured to collect all logs from Kubernetes
           and underlying operating systems, allowing the aggregation of privileged
@@ -966,12 +1480,20 @@ component-definition:
           Logging daemons are present on each node that BigBang is installed on.  Out of the box, the following events are captured:
           * all containers emitting to STDOUT or STDERR (captured  by container runtime translating container logs to /var/log/containers) * all kubernetes api server requests  * all events emitted by the kubelet
       - uuid: 6DDD209A-87A4-48BF-B6B9-5925CC7CF4C3
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#f1c83e1d-5643-4d27-b865-af2a86035e2e'
         control-id: au-3
         description: |-
           Records captured by the logging daemon are enriched to  ensure the following are always present:
           * time of the event (UTC) * source of event (pod, namespace, container id)
           Applications are responsible for providing all other information.
       - uuid: D3F883A0-4531-407F-8802-F8233CD1DEE9
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#f1c83e1d-5643-4d27-b865-af2a86035e2e'
         control-id: au-8
         description: |-
           Records captured by the logging daemon are enriched to  ensure the following are always present:
@@ -1003,9 +1525,17 @@ component-definition:
           the moniotiring of inbound/outbound traffic and payloads within the deployed
           environment.
       - uuid: 3C102ED9-4CE5-4AB1-ABE5-78426DF15BBE
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#b5e7867f-2453-4fb5-abfe-4246fed9de25'
         control-id: au-4
         description: Uses scalable object storage
       - uuid: 9904027A-28A8-4808-8617-D0DD29BF9B8B
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#b5e7867f-2453-4fb5-abfe-4246fed9de25'
         control-id: au-12.1
         description: Provides time-series event compilation capabilities
       uuid: ED0CF1C6-F869-4B7F-8652-464DDD9873D4
@@ -1019,6 +1549,683 @@ component-definition:
     - role-id: provider
       party-uuids:
       - 72134592-08C2-4A77-ABAD-C880F109367A
+  - control-implementations:
+    - source: https://raw.githubusercontent.com/GSA/fedramp-automation/master/dist/content/rev5/baselines/json/FedRAMP_rev5_HIGH-baseline-resolved-profile_catalog.json
+      description: Controls implemented by Keycloak for inheritance by applications
+        that adheres to FedRAMP High Baseline.
+      implemented-requirements:
+      - uuid: bf4cbb54-9e2f-4f5c-bc4e-9c9e2ba14e7f
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ac-2
+        description: a/c. Non-privileged and privilege users are prohibited by the
+          keycloak unless granted access through membership of RBAC roles.  b. Keycloak
+          can be configured for fine grain permissions to assign account managers.
+          d (1-3). Declarative groups specify authorized users, groups, and roles.
+          Access authorizations and assignment is determined by the organization.
+          e. Account creation requests are handled by Day 2 operations of keycloak.
+          f. Declarative groups assist in the handling of accounts, but ultimate is
+          is a day 2 operation. g. Keycloak web UI has a queryable audit logging feature
+          and backend logs can be monitored. h (1-3). Account Manager notification
+          when accounts are no longer needed, users are terminated, or need to know
+          changes are handled by Day 2 operations of keycloak. i (1-3). Authorized
+          access to the system based on valid access, intended usage, and other org
+          defined Attribute-based is handled by Day 2 operations of keycloak. j. Account
+          reviews for compliance is handled by day 2 operations. k. Account and group
+          authenticators removal notification is Handled by Day 2 operations of keycloak.
+          l. Account management process alignment with personnel terminations and
+          transfers is handled by Day 2 operations of keycloak.
+      - uuid: 4dde82ad-0e64-4a25-862c-6693e6dd94be
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ac-2.1
+        description: Keycloak allows the creation of clients that provide login to
+          app via Keycloak, allowing account management to be inherited from keycloak.
+          There are roughly 30 different event types in keycloak and an event listener
+          can be configured to notify when an account is created, enabled, modified,
+          disabled, or removed, or when users are terminated or transferred.
+      - uuid: ccedc338-e59b-4ed1-b70d-50a03e9e4b1b
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ac-2.4
+        description: Keycloak automatically logs and audits account-related events,
+          including account creation, modifications, enabling, disabling, and removal.
+          These logs capture all essential details, from changes to attributes and  roles
+          to changes in account status.
+      - uuid: bb0b7d48-7d5c-4df0-8b1d-28c0d1c188d2
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ac-2.5
+        description: Keycloak is configured with login timeout, session tokens, etc.
+          and are managed in realm settings/tokens
+      - uuid: a958ea9a-5e4d-4aac-92dd-2b7ec82e592b
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ac-2.7
+        description: Keycloak automatically logs and audits account-related events,
+          including account creation, modifications, enabling, disabling, and removal.
+          These logs capture all essential details, from changes to attributes and  roles
+          to changes in account status.
+      - uuid: 4ab728cb-4d0c-4383-a5f5-46d760138c98
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ac-2.11
+        description: Keycloak utilizes RBAC to define system access authorizations
+          to support system account access.
+      - uuid: aff80192-b250-43ef-a544-fdb92408e1ad
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ac-2.12
+        description: Keycloak automatically logs and audits account-related events,
+          including account creation, modifications, enabling, disabling, and removal.
+          These logs capture all essential details, from changes to attributes and  roles
+          to changes in account status. There are roughly 30 different event types
+          in keycloak and an event listener can be configured and automated via email,
+          external webhook, and logging stack monitored by admins to notify when an
+          account is created, enabled, modified, disabled, or removed, or when users
+          are terminated or transferred.
+      - uuid: 4fa5a9c9-5c6a-4aef-8668-5f55c6069d70
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ac-3
+        description: Keycloak allows the creation of clients that provide login to
+          app via Keycloak, allowing account management to be inherited from keycloak
+          and the enforcement of approved authorizations for logical access to information
+          and system resources.
+      - uuid: b9d2c6dc-36a2-484b-a4e2-b49c8bfba28f
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ac-4
+        description: Keycloak is deployed in a stand-alone DUBBD cluster with TLS
+          passthrough for OIDC/SAML integration. Controls are inherited from istio
+          via network policies, virtual services and gateway configs.
+      - uuid: 9e19167c-b29f-44c8-8075-95fe53770f05
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ac-4.4
+        description: Keycloak is designed and recommended to be deployed in a stand-alone
+          DUBBD cluster with TLS passthrough for OIDC/SAML integration. Controls are
+          inherited from istio via network policies, virtual services and gateway
+          configs.
+      - uuid: 810053a7-b1d3-4476-8b0b-2eeed796c0f7
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ac-5
+        description: Keycloak utilizes RBAC to define system access authorizations
+          to support separation of duties.
+      - uuid: 9fbe4b4a-ac70-4a16-b7b9-24c5b64e4cef
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ac-6
+        description: Keycloak utilizes RBAC to define system access authorizations
+          to support least privilege.
+      - uuid: 52776faa-3bf0-4b9c-ac51-27329006002a
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ac-6.1
+        description: Keycloak as an IDM / IAM provider supports least privilege through
+          user / group management (ABAC / RBAC) service offerings with no public access.
+      - uuid: 391de0d3-d891-4fbf-b652-8932c4ef2c5b
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ac-6.2
+        description: Keycloak as an IDM / IAM provider supports least privilege through
+          user / group management (ABAC / RBAC) service offerings
+      - uuid: 04f6d2ed-9168-41fb-b540-acdd91144e8c
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ac-6.5
+        description: Keycloak as an IDM / IAM provider supports least privilege through
+          user / group management (ABAC / RBAC) service offerings
+      - uuid: 950de57b-be72-449b-9089-3c5c72865109
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ac-6.7
+        description: Keycloak as an IDM / IAM provider supports least privilege through
+          user / group management (ABAC / RBAC) service offerings with no public access.
+      - uuid: 4e47e8f8-eb77-4c4f-9812-ab133d3565ad
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ac-6.9
+        description: Keycloak automatically logs and audits account-related events,
+          including account creation, modifications, enabling, disabling,  and removal.
+          These logs capture all essential details, from changes to attributes and
+          roles to changes in account status including privileged functions.
+      - uuid: f5fc2af2-31d2-465b-b6ea-b561c2152021
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ac-6.10
+        description: Keycloak as an IDM / IAM provider supports least privilege through
+          user / group management (ABAC / RBAC) service offerings
+      - uuid: 7588ce75-9d71-4cf8-8775-c9329ff11e2a
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ac-8
+        description: Keycloak has a standard DOD login banner see https://login.dso.mil
+      - uuid: d6287b1e-ed08-420b-ad30-80f79ddc158a
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ac-10
+        description: Keycloak can limit the number of concurrent user sessions.
+      - uuid: 884e469a-1e49-4972-bee8-6e1cfa765a31
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ac-11
+        description: Keycloak can terminate user sessions after defined session disconnect.
+      - uuid: d3dfd5a2-461b-4f57-8bdb-e4efd9cbfa6d
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ac-12
+        description: Keycloak can terminate user sessions after defined session disconnect.
+      - uuid: 552d3d1c-bb27-4e73-975f-ab425a4cdc19
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ac-14
+        description: Keycloak has the ability to allow anonymous access to resource
+          if Client Access Type is set to public.
+      - uuid: 51e4bd78-eebb-48f1-9152-65c4caebb74e
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ac-17.1
+        description: Keycloak manages remote access to other applications through
+          IAM.
+      - uuid: 254e236e-7eb3-4001-a75e-e5034412ca76
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ac-17.2
+        description: Keycloak employs a multifaceted approach to ensure the encryption
+          and protection of data, supporting compliance requirements.  It communicates
+          over HTTPS, leveraging Transport Layer Security (TLS) to safeguard the confidentiality
+          and integrity of data while  in transit. Additionally, Keycloak's token-based
+          authentication mechanism utilizes JSON Web Tokens (JWT) to assert identity.  These
+          tokens are cryptographically signed, and optionally encrypted, to validate
+          their integrity and shield their contents.  As an identity provider, Keycloak
+          also supports the Security Assertion Markup Language (SAML) 2.0, a robust
+          authentication and  authorization protocol that uses cryptographic methods
+          for secure single sign-on processes. By incorporating these mechanisms,  Keycloak
+          provides a secure environment that aligns with compliance control requirements
+          related to encryption and data protection.
+      - uuid: 210b1a83-fc62-43cd-b3f2-89a94f75ed15
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ac-17.3
+        description: Keycloak remote access traffic is routed through secure Istio
+          network.
+      - uuid: 5df00124-c0f9-41d3-b38e-ad4ecbd27a56
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ac-17.4
+        description: Keycloak supports authorizing the execution of privileged commands
+          through remote access using RBAC roles. While providing remote access is
+          handled through other means to the system, Keycloak authorizes the access
+          and provides the privileges attached.
+      - uuid: a2e33e11-1b7d-4391-b7f5-7752dfe147e6
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: au-2
+        description: Keycloak captures user and admin events and ships them out to
+          a logging server for analysis or trigger an action on specific event via
+          customizable EventListeners.
+      - uuid: f31018fe-03b7-4eda-9aaf-6926cb1b2849
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: au-3
+        description: Keycloak events contain what, when, where, source, and objects/entities
+          for policy violations.
+      - uuid: 302d6ca9-5e85-40bc-ab2d-103366466e53
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: au-3.1
+        description: Keycloak event logs include Time, Event Type, Details (Client,
+          User, IP Address). Events are shipped to logging.
+      - uuid: df820b32-27cb-4b8d-bebf-0ce1e769913d
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: au-4
+        description: Keycloak events can be both saved to database and shipped to
+          logging server. Both systems are external to Keycloaks application server.
+      - uuid: 23e31f50-7ef1-4fff-8d73-1693f430f285
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: au-7
+        description: Keycloak provides audit records.
+      - uuid: 84022485-4825-4770-b4ad-ab77e7576923
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: au-7.1
+        description: Within Keycloak records, sorting and searching are supported.
+      - uuid: 844ecfc3-fd1e-4e88-a7ae-f31940979204
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: au-8
+        description: Keycloak saves timestamps in event logs
+      - uuid: 7625bd08-d840-4131-aed4-b592cbdb9d19
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: au-9
+        description: Keycloak provides RBAC to restrict management of logs.
+      - uuid: 56c1a7e5-54ac-4df4-b54b-245ffdceb802
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: au-9.3
+        description: Keycloak encrypts event logs.
+      - uuid: 9d5e5dea-2716-432a-9b41-19b3a7394473
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: au-9.4
+        description: Keycloak provides RBAC to restrict management of logs.
+      - uuid: 5a338130-62da-4e51-a895-fb83c9ac89d9
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: au-10
+        description: Keycloak provides RBAC to restrict management of logs.
+      - uuid: d16a42e4-15c0-49ac-b476-fae598fb7948
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ia-2
+        description: Keycloak supports control through its IAM/SSO service.
+      - uuid: e918b4cf-c7e9-4a10-b1f9-c0b932c656cb
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ia-2.1
+        description: Keycloak supports MFA using mobile and x509 mTLS for both privileged
+          and non-privileged account management.
+      - uuid: 888e1a48-0738-416e-ac87-f6c2fcabc40b
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ia-2.2
+        description: Keycloak supports MFA using mobile and x509 mTLS for both privileged
+          and non-privileged account management.
+      - uuid: eb70ceb5-5cc7-4748-b65c-fb8fd6d3b219
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ia-2.6
+        description: Keycloak supports MFA login.
+      - uuid: 8a292874-d407-41cb-9b07-3003b2261039
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ia-2.8
+        description: Keycloak implements replay-resistant authentication mechanisms
+          by utilizing JWT (JSON Web Tokens) which have inherent replay-resistant
+          properties due to their limited lifetime.  Furthermore, Keycloak promotes
+          the use of HTTPS, ensuring a secure communication channel resistant to packet
+          replay. To enhance security, especially for privileged accounts, Keycloak  supports
+          multi-factor authentication, including one-time passwords (OTP), which,
+          by nature, are immune to replay attacks since they're valid for just one
+          session or transaction.
+      - uuid: 205ba589-efa3-4394-87e2-589ba5a18355
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ia-2.12
+        description: Keycloak supports PIV credentials.
+      - uuid: 7d70915d-7302-45f8-b53c-85de8fd9e523
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ia-4
+        description: Keycloak assigns users, groups, roles, services, or devices with
+          a UUID that is unique to each.
+      - uuid: d4c029a1-fef8-44b2-b0e8-df4f839c8473
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ia-4.4
+        description: Keycloak assigns users, groups, roles, services, or devices with
+          a UUID that is unique to each.
+      - uuid: 83bef4f9-f322-4ad0-a2ed-e865acd43015
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ia-5.1
+        description: Keycloak provides password-policies to support control. https://github.com/keycloak/keycloak-documentation/blob/main/server_admin/topics/authentication/password-policies.adoc
+      - uuid: 2898a2f5-905a-4ab6-b66b-4a42dec239f5
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ia-5.2
+        description: Keycloak supports OCSP checking, and truststore/chain validation
+          for x509 PKI access.
+      - uuid: 71674376-69be-4d05-8486-33654630b2b5
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ia-5.8
+        description: Keycloak employs SSO to manage the risk of multiple accounts.
+      - uuid: 826a6538-e2a1-470e-87ee-c1954c0ac701
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ia-7
+        description: Keycloak employs FIPS approved encryption for authentication.
+      - uuid: e9eaaf1d-f400-4a50-babd-b166d22f77e1
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ia-8.1
+        description: Keycloak supports authenticating non-organizational users through
+          supporting mTLS signed by external certificate authorities.
+      - uuid: 4e1dedd3-3114-4955-bcb8-95fad5b3a073
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ia-11
+        description: Keycloak supports OIDC/SAML which support expiration dates in
+          tokens/assertions.
+      - uuid: 333da8fb-b64a-4e27-bd8a-b701d48971f1
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: ia-12
+        description: Keycloak utilizes unique authentication identities that contain
+          UUIDs to ensure uniqueness.
+      uuid: 44bb0268-355d-455b-be33-7fc6ecc89668
+    uuid: 40e91667-00a1-450b-a99e-ac09bd6af568
+    title: Keycloak
+    description: |
+      An implementation of a customizable Keycloak for single sign-on (SSO) with Identity and Access Management
+    type: software
+    purpose: Provides user federation, strong authentication, user management, fine-grained
+      authorization.
+    responsible-roles:
+    - role-id: provider
+      party-uuids:
+      - f3cf70f8-ba44-4e55-9ea3-389ef24847d3
+  - control-implementations:
+    - source: https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json
+      description: Controls implemented by Keycloak for inheritance by applications
+        to meet NIST 800-53 controls related to DoD IL6.
+      implemented-requirements:
+      - uuid: 15af97f8-fb72-4b9c-97ec-2d8c0591aefc
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#081082ec-5557-4cfa-ba82-59a5690ded77'
+        control-id: sc-23.5
+        description: Keycloak only allows connections from trusted certificate authorities
+          to establish secure sessions.
+      uuid: 4cc42982-37f0-48ba-b038-3bde7e22f40e
+    uuid: 77034e2c-ce65-4db3-8a40-9b12902f333e
+    title: Keycloak
+    description: |
+      An implementation of a customizable Keycloak for single sign-on (SSO) with Identity and Access Management
+    type: software
+    purpose: Provides user federation, strong authentication, user management, fine-grained
+      authorization.
+    responsible-roles:
+    - role-id: provider
+      party-uuids:
+      - f3cf70f8-ba44-4e55-9ea3-389ef24847d3
+  - control-implementations:
+    - source: https://raw.githubusercontent.com/GSA/fedramp-automation/master/dist/content/rev5/baselines/json/FedRAMP_rev5_HIGH-baseline-resolved-profile_catalog.json
+      description: Controls implemented by authservice to meet the FedRAMP High Baseline.
+      implemented-requirements:
+      - uuid: b20b8050-8cca-4284-8c54-0045fe03e4f7
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#eabe01b2-1c66-446a-85d5-3bcf81d81315'
+        control-id: ac-2.1
+        description: Authservice allows the use of an external identity OIDC provider
+          for application login by configuring filter chain matching for hostname
+          (headers) for applications. This control can then be inherited by the Identity
+          Provider.
+      - uuid: 58f3f3cb-f3a3-4c07-b128-58085301eb95
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#eabe01b2-1c66-446a-85d5-3bcf81d81315'
+        control-id: ac-8
+        description: Authservice has a standard DOD login banner see https://login.dso.mil
+      - uuid: b74a0149-3e0e-43d2-a870-002151601126
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#eabe01b2-1c66-446a-85d5-3bcf81d81315'
+        control-id: ac-17.3
+        description: Authservice remote access traffic is routed through secure Istio
+          network.
+      - uuid: 66e85180-094a-471a-817f-863898dd061f
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#eabe01b2-1c66-446a-85d5-3bcf81d81315'
+        control-id: au-2
+        description: Authservice logs HTTP method (GET, POST, etc) Timestamp of request,
+          destinations, response codes, and identity.
+      - uuid: 8be1a08b-8d87-4105-95b4-990d8797538f
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#eabe01b2-1c66-446a-85d5-3bcf81d81315'
+        control-id: au-3
+        description: Authservice logs HTTP method (GET, POST, etc) Timestamp of request,
+          destinations, response codes, and identity.
+      - uuid: 61da4077-4856-4e27-b82d-37c70b2b19ff
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#eabe01b2-1c66-446a-85d5-3bcf81d81315'
+        control-id: au-3.1
+        description: Authservice logs HTTP method (GET, POST, etc) Timestamp of request,
+          destinations, response codes, and identity.
+      - uuid: a8ef73ff-b8be-42e5-b850-558605ad12cc
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#eabe01b2-1c66-446a-85d5-3bcf81d81315'
+        control-id: ia-2
+        description: Authservice maps user sessions to user identities in an IdP.
+      - uuid: 5f13939a-e4e4-4bf1-a278-fc4d109f0b45
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#eabe01b2-1c66-446a-85d5-3bcf81d81315'
+        control-id: ia-2.1
+        description: Allows the use of an external identity OIDC provider for application
+          login by configuring filter chain  matching hostname for application. The
+          IdP can enforce multi-factor authentication for the client used  by authservice.
+          This control can then be inherited from the IdP.
+      - uuid: 6d6729b5-4875-4f73-92aa-f4dbfe2ff331
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#eabe01b2-1c66-446a-85d5-3bcf81d81315'
+        control-id: ia-2.2
+        description: Allows the use of an external identity OIDC provider for application
+          login by configuring filter chain  matching hostname for application. The
+          IdP can enforce multi-factor authentication for the client used  by authservice.
+          This control can then be inherited from the IdP.
+      - uuid: 7841d436-bf8e-4ab1-bf2d-efc9505374b6
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#eabe01b2-1c66-446a-85d5-3bcf81d81315'
+        control-id: ia-2.6
+        description: Allows the use of an external identity OIDC provider for application
+          login by configuring filter chain  matching hostname for application. The
+          IdP can enforce multi-factor authentication for the client used  by authservice.
+          This control can then be inherited from the IdP.
+      - uuid: 93cce3ab-3579-4b38-8548-edb4cec25850
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#eabe01b2-1c66-446a-85d5-3bcf81d81315'
+        control-id: ia-2.8
+        description: Allows the use of an external identity OIDC provider for application
+          login by configuring filter chain matching hostname for application. The
+          IdP and OIDC  protocol use "nonce" and "state" fields for replay resistance.
+          This control can then be inherited from the IdP.
+      - uuid: 19292248-d3ce-4ae0-82af-3b1afd8be3bd
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#eabe01b2-1c66-446a-85d5-3bcf81d81315'
+        control-id: ia-2.12
+        description: Allows the use of an external identity OIDC provider for application
+          login by configuring filter chain matching hostname for application. The
+          IdP and OIDC  protocol use "nonce" and "state" fields for replay resistance.
+          This control can then be inherited from the IdP.
+      - uuid: 14362044-2ff6-4a8a-9041-e1e4b0295b6e
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#eabe01b2-1c66-446a-85d5-3bcf81d81315'
+        control-id: ia-3
+        description: Allows the use of an external identity OIDC provider for application
+          login by configuring filter chain matching hostname for application.  The
+          IdP can be configured to uniquely identify and authenticate devices before
+          establishing connections. This control can then be inherited  from the IdP.
+      - uuid: 31cfa869-f442-4221-92ce-0198ff834cc0
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#eabe01b2-1c66-446a-85d5-3bcf81d81315'
+        control-id: ia-4
+        description: Authservice retrieves JWT identifiers from the IdP which include
+          various "claims" including the username of individuals, and a  list of "groups"
+          (roles) the user has access to. This control can then be inherited from
+          the IdP.
+      - uuid: d6365446-5980-40f7-a4be-a3da7ae0b2ec
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#eabe01b2-1c66-446a-85d5-3bcf81d81315'
+        control-id: ia-11
+        description: |-
+          Allows the use of an external identity OIDC provider for application login by configuring filter chain matching hostname for application.
+          By restricting the lifetime of the JWT, Authservice will reauthenticate the user when it expires. The IdP can then implement concurrent  session control, enforced during re-authentication. This control can then be inherited from the IdP.
+      uuid: ace2d94d-adb5-44d1-84f7-61cde335f919
+    uuid: 4ac855b5-8fa6-4ef3-9f42-c5695c455dc1
+    title: Authservice
+    description: "An implementation of Envoy External Authorization focused on handling
+      AuthN/AuthZ \nfor Istio and Kubernetes that adheres to FedRAMP High Baseline.\n"
+    type: software
+    purpose: Provides authn/authz capabilities to applications via Istio Service Mesh
+    responsible-roles:
+    - role-id: provider
+      party-uuids:
+      - f3cf70f8-ba44-4e55-9ea3-389ef24847d3
+  - control-implementations:
+    - source: https://raw.githubusercontent.com/usnistgov/oscal-content/master/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json
+      description: Controls implemented by authservice to meet NIST 800-53 controls
+        related to DoD IL6.
+      implemented-requirements:
+      - uuid: 2f619c68-3363-4a74-b903-5124ad769723
+        links:
+        - rel: reference
+          text: Lula Validation
+          href: '#eabe01b2-1c66-446a-85d5-3bcf81d81315'
+        control-id: sc-23.5
+        description: Authservice only allows SSO connections from trusted certificate
+          authorities to establish secure sessions.
+      uuid: cfc79240-b793-4623-8d7d-9d01ea5f9c10
+    uuid: 37488718-938a-43d2-91ff-79193e44a67a
+    title: Authservice
+    description: "An implementation of Envoy External Authorization focused on handling
+      AuthN/AuthZ \nfor Istio and Kubernetes that adheres to DoD IL6\n"
+    type: software
+    purpose: Provides authn/authz capabilities to applications via Istio Service Mesh
+    responsible-roles:
+    - role-id: provider
+      party-uuids:
+      - f3cf70f8-ba44-4e55-9ea3-389ef24847d3
   back-matter:
     resources:
     - uuid: 60826461-D279-468C-9E4B-614FAC44A306
@@ -1046,9 +2253,41 @@ component-definition:
 
               validate {
                 input.kind == "Deployment"
-                podsRequired := input.status.required
-                podsReady := input.status.ready
+                podsRequired := input.status.replicas
+                podsReady := input.status.readyReplicas
                 podsReady == podsRequired
+              }
+      rlinks:
+      - href: lula.dev
+    - uuid: 1761ac07-80dd-47d2-947e-09f67943b986
+      title: Lula Validation
+      description: "target:\n  provider: opa\n  domain: kubernetes\n  payload:\n    resourceRules:\n
+        \   - Group: \n      Version: v1\n      Resource: pods\n      Namespaces:
+        [monitoring, logging, promtail, tempo, kiali, neuvector, keycloak, metrics-server]\n
+        \   rego: |\n      package validate\n\n      validate {\n        input.kind
+        == \"Pod\"\n        images := input.spec.containers[_].image\n        contains(images,
+        \"proxyv2\")\n      }"
+      rlinks:
+      - href: lula.dev
+    - uuid: 68854323-4e62-4514-ac2b-9b0132a2b215
+      title: Lula Validation
+      description: |-
+        target:
+          provider: opa
+          domain: kubernetes
+          payload:
+            resourceRules:
+            - Group: security.istio.io
+              Version: v1beta1
+              Resource: peerauthentications
+              Namespaces: []
+            rego: |
+              package validate
+
+              validate {
+                input.kind == "PeerAuthentication"
+                mode := input.spec.mtls.mode
+                mode == "STRICT"
               }
       rlinks:
       - href: lula.dev
@@ -1077,8 +2316,8 @@ component-definition:
 
               validate {
                 input.kind == "Deployment"
-                podsRequired := input.status.required
-                podsReady := input.status.ready
+                podsRequired := input.status.replicas
+                podsReady := input.status.readyReplicas
                 podsReady == podsRequired
               }
       rlinks:
@@ -1108,8 +2347,8 @@ component-definition:
 
               validate {
                 input.kind == "Deployment"
-                podsRequired := input.status.required
-                podsReady := input.status.ready
+                podsRequired := input.status.replicas
+                podsReady := input.status.readyReplicas
                 podsReady == podsRequired
               }
       rlinks:
@@ -1138,9 +2377,9 @@ component-definition:
               package validate
 
               validate {
-                input.kind == "Statefulset"
-                podsRequired := input.status.required
-                podsReady := input.status.ready
+                input.kind == "StatefulSet"
+                podsRequired := input.status.replicas
+                podsReady := input.status.readyReplicas
                 podsReady == podsRequired
               }
       rlinks:
@@ -1170,9 +2409,55 @@ component-definition:
 
               validate {
                 input.kind == "Deployment"
-                podsRequired := input.status.required
-                podsReady := input.status.ready
+                podsRequired := input.status.replicas
+                podsReady := input.status.readyReplicas
                 podsReady == podsRequired
+              }
+      rlinks:
+      - href: lula.dev
+    - uuid: b8353b85-4bec-49f0-bdc0-713ebac483e6
+      title: Lula Validation
+      description: |-
+        target:
+          provider: opa
+          domain: kubernetes
+          payload:
+            resourceRules:
+            - Group: apps
+              Version: v1
+              Resource: statefulsets
+              Namespaces: [monitoring]
+            rego: |
+              package validate
+
+              validate {
+                input.kind == "StatefulSet"
+                podsRequired := input.status.replicas
+                podsReady := input.status.readyReplicas
+                podsReady == podsRequired
+              }
+      rlinks:
+      - href: lula.dev
+    - uuid: 494a1c21-db5f-4049-9015-b00dc98f3ace
+      title: Lula Validation
+      description: |-
+        target:
+          provider: opa
+          domain: kubernetes
+          payload:
+            resourceRules:
+            - Group: apps
+              Version: v1
+              Resource: daemonsets
+              Namespaces: [monitoring]
+            rego: |
+              package validate
+
+              validate {
+                input.kind == "DaemonSet"
+                podsDesired := input.status.desiredNumberScheduled
+                podsReady := input.status.numberReady
+                podsReady == podsDesired
               }
       rlinks:
       - href: lula.dev
@@ -1201,8 +2486,8 @@ component-definition:
 
               validate {
                 input.kind == "Deployment"
-                podsRequired := input.status.required
-                podsReady := input.status.ready
+                podsRequired := input.status.replicas
+                podsReady := input.status.readyReplicas
                 podsReady == podsRequired
               }
       rlinks:
@@ -1231,10 +2516,10 @@ component-definition:
               package validate
 
               validate {
-                input.kind == "Daemonset"
-                podsRequired := input.status.required
-                podsReady := input.status.ready
-                podsReady == podsRequired
+                input.kind == "DaemonSet"
+                podsDesired := input.status.desiredNumberScheduled
+                podsReady := input.status.numberReady
+                podsReady == podsDesired
               }
       rlinks:
       - href: lula.dev
@@ -1262,9 +2547,66 @@ component-definition:
               package validate
 
               validate {
-                input.kind == "Statefulset"
-                podsRequired := input.status.required
-                podsReady := input.status.ready
+                input.kind == "StatefulSet"
+                podsRequired := input.status.replicas
+                podsReady := input.status.readyReplicas
+                podsReady == podsRequired
+              }
+      rlinks:
+      - href: lula.dev
+    - uuid: 810766cd-2c21-4452-8653-6a871e439f64
+      title: UDS IDAM
+      rlinks:
+      - href: https://github.com/defenseunicorns/uds-idam
+    - uuid: 081082ec-5557-4cfa-ba82-59a5690ded77
+      title: Lula Validation
+      description: |-
+        target:
+          provider: opa
+          domain: kubernetes
+          payload:
+            resourceRules:                               # Mandatory, resource selection criteria, at least one resource rule is required
+            - Group:                                     # empty or "" for core group
+              Version: v1                                # Version of resource
+              Resource: pods                             # Resource type
+              Namespaces: [keycloak]                     # Namespaces to validate the above resources in. Empty or "" for all namespaces or non-namespaced resources
+            rego: |
+              package validate
+
+              validate {
+                input.kind == "Pod"
+                podLabel := input.metadata.labels["security.istio.io/tlsMode"]
+                podLabel == "istio"
+              }
+      rlinks:
+      - href: lula.dev
+    - uuid: 02b2a143-e63a-45f1-83e8-d38202af73ff
+      title: Github Repo - Authservice
+      rlinks:
+      - href: https://github.com/istio-ecosystem/authservice
+    - uuid: dab6f046-305d-46f2-a821-84b0cb80d80a
+      title: UDS SSO
+      rlinks:
+      - href: https://github.com/defenseunicorns/uds-sso
+    - uuid: eabe01b2-1c66-446a-85d5-3bcf81d81315
+      title: Lula Validation
+      description: |-
+        target:
+          provider: opa
+          domain: kubernetes
+          payload:
+            resourceRules:
+            - Group: apps
+              Version: v1
+              Resource: deployments
+              Namespaces: [authservice]
+            rego: |
+              package validate
+
+              validate {
+                input.kind == "Deployment"
+                podsRequired := input.status.replicas
+                podsReady := input.status.readyReplicas
                 podsReady == podsRequired
               }
       rlinks:

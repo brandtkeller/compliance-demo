@@ -42,10 +42,18 @@ component-definition:
         control-id: au-4
         description: >-
           Uses scalable object storage
+        links:
+          - href: '#b5e7867f-2453-4fb5-abfe-4246fed9de25'
+            rel: reference
+            text: Lula Validation
       - uuid: 9904027A-28A8-4808-8617-D0DD29BF9B8B
         control-id: au-12.1
         description: >-
           Provides time-series event compilation capabilities
+        links:
+          - href: '#b5e7867f-2453-4fb5-abfe-4246fed9de25'
+            rel: reference
+            text: Lula Validation
   back-matter: 
       resources:
       - uuid: 0DA4FE66-9000-49DF-B896-938C94AAE89C

@@ -36,19 +36,19 @@ DEMO_PROMPT="${GREEN}➜ ${CYAN}\W ${COLOR_RESET}"
 clear
 
 ## Show the live environment
-p "kubectl get po -A"
+pe "kubectl get po -A"
 
 ## Show the available component files
-pei "ls -l ../components"
+pe "ls -l ../components"
 
 ## Target a single component file
 pe "cat ../components/monitoring.yaml"
 
 ## Validate the single component file
-p "lula validate ../components/monitoring.yaml"
+pe "lula validate ../components/monitoring.yaml"
 
 ## Review the assessment
-p "cat assessment-results*.yaml"
+pe "cat assessment-results*.yaml"
 
 ## Remove the assessment
 rm assessment-results*.yaml
@@ -56,14 +56,16 @@ rm assessment-results*.yaml
 ## Now discuss the platform as a collection of components
 pe "cat platform.yaml"
 
+p "component-generator aggregate -i platform.yaml"
+
 ## Aggregation of components
 pe "cat oscal-component.yaml"
 
 ## Validate the whole platform
-p "lula validate oscal-component.yaml"
+pe "lula validate oscal-component.yaml"
 
 ## Review the assessment
-p "cat assessment-results*.yaml"
+pe "cat assessment-results*.yaml"
 
 ## Remove the assessment
 rm assessment-results*.yaml

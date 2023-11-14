@@ -34,6 +34,10 @@ component-definition:
         control-id: ac-6.9
         description: >-
           Promtail can be configured to collect all logs from Kubernetes and underlying operating systems, allowing the aggregation of privileged function calls.
+        links:
+          - href: '#f1c83e1d-5643-4d27-b865-af2a86035e2e'
+            rel: reference
+            text: Lula Validation
       - uuid: CF81FA93-D365-42C2-82B1-A24EB92556E5
         control-id: au-2
         description: >-
@@ -55,6 +59,10 @@ component-definition:
           * source of event (pod, namespace, container id)
 
           Applications are responsible for providing all other information.
+        links:
+          - href: '#f1c83e1d-5643-4d27-b865-af2a86035e2e'
+            rel: reference
+            text: Lula Validation
       - uuid: D3F883A0-4531-407F-8802-F8233CD1DEE9
         control-id: au-8
         description: >-
@@ -64,6 +72,10 @@ component-definition:
           * source of event (pod, namespace, container id)
 
           Applications are responsible for providing all other information.
+        links:
+          - href: '#f1c83e1d-5643-4d27-b865-af2a86035e2e'
+            rel: reference
+            text: Lula Validation
   back-matter: 
     resources:
     - uuid: D552C935-E40C-4A03-B5CC-4605EBD95B6D
