@@ -294,6 +294,9 @@ component-definition:
           - href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
             rel: reference
             text: Lula Validation
+          - href: '#1761ac07-80dd-47d2-947e-09f67943b986'
+            rel: reference
+            text: Lula Validation
       - uuid: 1D1E8705-F6EB-4A21-A24F-1DF7427BA491
         control-id: ac-4.4
         description: >-
@@ -904,4 +907,26 @@ component-definition:
                 podsRequired := input.status.replicas
                 podsReady := input.status.readyReplicas
                 podsReady == podsRequired
+              }
+    - uuid: 1761ac07-80dd-47d2-947e-09f67943b986
+      title: Lula Validation
+      rlinks:
+        - href: lula.dev
+      description: >-
+        target:
+          provider: opa
+          domain: kubernetes
+          payload:
+            resourceRules:
+            - Group: 
+              Version: v1
+              Resource: pods
+              Namespaces: [istio-system]
+            rego: |
+              package validate
+
+              validate {
+                input.kind == "Pod"
+                images := input.spec.containers[_].image
+                contains(images, proxyv2)
               }
