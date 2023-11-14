@@ -158,8 +158,8 @@ component-definition:
 
               validate {
                 input.kind == "Deployment"
-                podsRequired := input.status.required
-                podsReady := input.status.ready
+                podsRequired := input.status.replicas
+                podsReady := input.status.readyReplicas
                 podsReady == podsRequired
               }
     - uuid: b8353b85-4bec-49f0-bdc0-713ebac483e6
@@ -181,8 +181,8 @@ component-definition:
 
               validate {
                 input.kind == "Statefulset"
-                podsRequired := input.status.required
-                podsReady := input.status.ready
+                podsRequired := input.status.replicas
+                podsReady := input.status.readyReplicas
                 podsReady == podsRequired
               }
     - uuid: 494a1c21-db5f-4049-9015-b00dc98f3ace
@@ -203,7 +203,7 @@ component-definition:
               package validate
 
               validate {
-                input.kind == "Daemonset"
+                input.kind == "DaemonSet"
                 podsDesired := input.status.desiredNumberScheduled
                 podsReady := input.status.numberReady
                 podsReady == podsDesired
