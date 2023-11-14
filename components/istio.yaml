@@ -921,7 +921,7 @@ component-definition:
             - Group: 
               Version: v1
               Resource: pods
-              Namespaces: [istio-system]
+              Namespaces: [monitoring, logging, promtail, tempo, kiali, neuvector, keycloak, metrics-server]
             rego: |
               package validate
 
