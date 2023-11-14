@@ -92,8 +92,8 @@ component-definition:
               package validate
 
               validate {
-                input.kind == "Daemonset"
-                podsRequired := input.status.required
-                podsReady := input.status.ready
-                podsReady == podsRequired
+                input.kind == "DaemonSet"
+                podsDesired := input.status.desiredNumberScheduled
+                podsReady := input.status.numberReady
+                podsReady == podsDesired
               }

@@ -74,8 +74,8 @@ component-definition:
                 package validate
 
                 validate {
-                  input.kind == "Statefulset"
-                  podsRequired := input.status.required
-                  podsReady := input.status.ready
+                  input.kind == "StatefulSet"
+                  podsRequired := input.status.replicas
+                  podsReady := input.status.readyReplicas
                   podsReady == podsRequired
                 }

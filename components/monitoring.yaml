@@ -180,7 +180,7 @@ component-definition:
               package validate
 
               validate {
-                input.kind == "Statefulset"
+                input.kind == "StatefulSet"
                 podsRequired := input.status.replicas
                 podsReady := input.status.readyReplicas
                 podsReady == podsRequired

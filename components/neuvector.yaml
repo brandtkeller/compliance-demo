@@ -198,7 +198,7 @@ component-definition:
 
                 validate {
                   input.kind == "Deployment"
-                  podsRequired := input.status.required
-                  podsReady := input.status.ready
+                  podsRequired := input.status.replicas
+                  podsReady := input.status.readyReplicas
                   podsReady == podsRequired
                 }
