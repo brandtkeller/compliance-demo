@@ -928,5 +928,5 @@ component-definition:
               validate {
                 input.kind == "Pod"
                 images := input.spec.containers[_].image
-                contains(images, proxyv2)
+                contains(images, "proxyv2")
               }
