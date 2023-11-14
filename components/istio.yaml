@@ -973,6 +973,28 @@ component-definition:
       title: Big Bang Istio Operator package
       rlinks:
         - href: https://repo1.dso.mil/platform-one/big-bang/apps/core/istio-controlplane
+    - uuid: 1761ac07-80dd-47d2-947e-09f67943b986
+      title: Lula Validation
+      rlinks:
+        - href: lula.dev
+      description: >-
+        target:
+          provider: opa
+          domain: kubernetes
+          payload:
+            resourceRules:
+            - Group: 
+              Version: v1
+              Resource: pods
+              Namespaces: [monitoring, logging, promtail, tempo, kiali, neuvector, keycloak, metrics-server]
+            rego: |
+              package validate
+
+              validate {
+                input.kind == "Pod"
+                images := input.spec.containers[_].image
+                contains(images, "proxyv2")
+              }
     - uuid: 506c5fd6-42a1-4a27-8be4-ff8d305dcbb2
       title: Lula Validation
       rlinks:
@@ -995,28 +1017,6 @@ component-definition:
                 podsRequired := input.status.replicas
                 podsReady := input.status.readyReplicas
                 podsReady == podsRequired
-              }
-    - uuid: 1761ac07-80dd-47d2-947e-09f67943b986
-      title: Lula Validation
-      rlinks:
-        - href: lula.dev
-      description: >-
-        target:
-          provider: opa
-          domain: kubernetes
-          payload:
-            resourceRules:
-            - Group: 
-              Version: v1
-              Resource: pods
-              Namespaces: [monitoring, logging, promtail, tempo, kiali, neuvector, keycloak, metrics-server]
-            rego: |
-              package validate
-
-              validate {
-                input.kind == "Pod"
-                images := input.spec.containers[_].image
-                contains(images, "proxyv2")
               }
     - uuid: 68854323-4e62-4514-ac2b-9b0132a2b215
       title: Lula Validation

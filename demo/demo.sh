@@ -42,31 +42,37 @@ pe "kubectl get po -A"
 pe "ls -l ../components"
 
 ## Target a single component file
-pe "cat ../components/monitoring.yaml"
+p "cat ../components/istio.yaml"
+cat ../components/istio.yaml | yq
 
+pe "cat ../components/istio.yaml | yq '.component-definition.metadata'"
+
+pe "cat ../components/istio.yaml | yq '.component-definition.components[0].control-implementations[0].implemented-requirements[1]'"
+
+pe "cat ../components/istio.yaml | yq '.component-definition.back-matter'"
 ## Validate the single component file
-pe "lula validate ../components/monitoring.yaml"
+pe "lula validate ../components/istio.yaml"
 
 ## Review the assessment
-pe "cat assessment-results*.yaml"
-
+p "cat assessment-results*.yaml"
+cat assessment-results*.yaml | yq
 ## Remove the assessment
 rm assessment-results*.yaml
 
 ## Now discuss the platform as a collection of components
-pe "cat platform.yaml"
-
+p "cat platform.yaml"
+cat platform.yaml | yq
 p "component-generator aggregate -i platform.yaml"
 
 ## Aggregation of components
 pe "cat oscal-component.yaml"
-
+cat oscal-component.yaml | yq
 ## Validate the whole platform
 pe "lula validate oscal-component.yaml"
 
 ## Review the assessment
-pe "cat assessment-results*.yaml"
-
+p "cat assessment-results*.yaml"
+cat assessment-results*.yaml | yq
 ## Remove the assessment
 rm assessment-results*.yaml
 
