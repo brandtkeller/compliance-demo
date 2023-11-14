@@ -135,7 +135,10 @@ component-definition:
           The default installation includes a Keycloak-based external authorization server that can be
           integrated with your existing identity provider to perform authentication as well as authorization
           of end-user access per request.
-
+        links:
+          - href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
+            rel: reference
+            text: Lula Validation
       - uuid: D7717A9B-7604-45EF-8DCF-EE4DF0417F9C
         control-id: ac-4
         description: >-
@@ -306,7 +309,10 @@ component-definition:
           All encrypted HTTPS connections are terminated at the istio ingress gateway.
 
           AC-4.4 is not required for FedRAMP Moderate.
-
+        links:
+          - href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
+            rel: reference
+            text: Lula Validation
       - uuid: 366AAE60-AC24-4F48-BF63-4C0EB496CC9E
         control-id: ac-4.21
         description: >-
@@ -328,14 +334,20 @@ component-definition:
 
           # BigBang Implementation
           So long as you're authoring service-to-service access policies for applications in the cluster, BigBang's default deployment satisfies these requirements.
-
+        links:
+          - href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
+            rel: reference
+            text: Lula Validation
       - uuid: CD1315BF-91FE-490A-B6A6-5616690D78A8
         control-id: ac-6.3
         description: >-
           Can be configured with an "admin" gateway to restrict access to applications that only need sysadmin access. Not standard in BB itself though.
 
           AC-6.3 is not required for FedRAMP Moderate.
-
+        links:
+          - href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
+            rel: reference
+            text: Lula Validation
       - uuid: 3772B5F3-34BC-4EAE-B739-8499F828C2F4
         control-id: ac-6.9
         description: >-
@@ -353,7 +365,10 @@ component-definition:
 
           # Detailed Instructions
           See AU-3 for information on configuring Istio's logs to include more (or less) information.
-
+        links:
+          - href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
+            rel: reference
+            text: Lula Validation
       - uuid: 6109E09A-8279-44AB-8CA4-2051AF895648
         control-id: ac-14
         description: >-
@@ -376,12 +391,18 @@ component-definition:
           BigBang's default configuration of Istio ensures requests have authentication and authorization applied, including end-user credential validation via authservice. For this reason, all methods are protected and require authentication by default. Any methods exempted from the requirement for authentication need to explicitly author an authorization policy opting out of the platform's built-in checks.
 
           This configuration is only valid when applications opt in to authservice; the same guarantees cannot be made at the platform level for applications that do not use the platform SSO via authservice.
-
+        links:
+          - href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
+            rel: reference
+            text: Lula Validation
       - uuid: 9B6BA674-E6ED-4FB6-B216-3C8733F36411
         control-id: au-2
         description: >-
           Istio provides access logs for all HTTP network requests, including mission applications.
-
+        links:
+          - href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
+            rel: reference
+            text: Lula Validation
       - uuid: D3CBC898-F938-4FAA-B1B1-2597A69B5600
         control-id: au-3
         description: >-
@@ -421,7 +442,10 @@ component-definition:
 
           # BigBang Implementation
           BigBang ships with Istio's default logging, which is sufficient to satisfy organizational requirements. Therefore, Istio satisfies AU-3 requirements in BigBang deployments.
-
+        links:
+          - href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
+            rel: reference
+            text: Lula Validation
       - uuid: 630301DB-8730-4107-9E14-A1EEDE351122
         control-id: au-3.1
         description: >-
@@ -435,7 +459,10 @@ component-definition:
 
           # Detailed Instructions
           See AU-3 instructions above for configuring the access log string and links to documentation for all available data that can be emitted.
-
+        links:
+          - href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
+            rel: reference
+            text: Lula Validation
       - uuid: 6F2A603C-D240-47F1-9BED-334000E15011
         control-id: au-9
         description: >-
@@ -451,7 +478,10 @@ component-definition:
           See AU-3 for details on how to configure Istio’s logging output. A common pattern we see is using a log collection daemon – like Fluentd – to collect local logs and persist them in a datastore conforming to AU-9. In this case, your log collector’s configuration needs to match Istio’s log output configuration (they need to agree on a log file, standard out, or the collector needs to be configured to collect all output  – standard out as well as any files written).
 
           Kubernetes RBAC should be configured to allow only specific users access to the log files Envoy produces, ideally no users should have direct access and instead only access logs via the log ingestion system (like Splunk).
-
+        links:
+          - href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
+            rel: reference
+            text: Lula Validation
       - uuid: 6F2A603C-D240-47F1-9BED-334000E15011
         control-id: au-9.2
         description: >-
@@ -465,7 +495,10 @@ component-definition:
 
           # Detailed Instructions
           See AU-9 for information on preserving Istio’s logs conforming to AU-9 controls (including this one). In short, your log storage system itself should implement AU-9 (2) controls by persisting logs it stores on physically separate infrastructure.
-
+        links:
+          - href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
+            rel: reference
+            text: Lula Validation
       - uuid: 13EC0F18-2696-4407-8478-3AFE839D4764
         control-id: AU-12
         description: >-
@@ -487,7 +520,10 @@ component-definition:
 
           # BigBang Implementation
           BigBang configures Istio to emit logs for all network traffic out of the box. These logs conform to the requirements of UA-3 (see that section for details). These logs cover the events listed in UA-2. Therefore Istio in BigBang satisfies AU-12.
-
+        links:
+          - href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
+            rel: reference
+            text: Lula Validation
       - uuid: D01F6B2D-F18E-47E9-94DC-95C0B5675E13
         control-id: cm-5
         description: >-
@@ -506,7 +542,10 @@ component-definition:
 
           # BigBang Implementation
           BigBang implements CM-5 controls by implementing infrastructure as code practices, configuring Kubernetes RBAC to prevent humans from authoring configuration and allowing only continuous delivery systems (Flux, by default) to author runtime configuration. Since all configuration is managed in this CM-5 conformant way, Istio’s configuration is controlled in a CM-5 conformant way.
-
+        links:
+          - href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
+            rel: reference
+            text: Lula Validation
       - uuid: 618C16DE-82D0-46FF-9A3A-D260D5F4F654
         control-id: cm-6
         description: >-
@@ -529,7 +568,10 @@ component-definition:
 
           # BigBang Implementation
           Tetrate helps maintain and periodically audits BigBang’s Istio configurations to ensure they implement best practice defaults.
-
+        links:
+          - href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
+            rel: reference
+            text: Lula Validation
       - uuid: 6370B2DA-1E35-4916-8591-91FB9EDBE72B
         control-id: cm-8
         description: >-
@@ -558,7 +600,10 @@ component-definition:
 
           # BigBang Implementation
           BigBang’s Istio deployment satisfies this requirement. Further, BigBang includes Kiali, providing an easy view for this data.
-
+        links:
+          - href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
+            rel: reference
+            text: Lula Validation
       - uuid: AB9189FF-34E2-4D7E-8018-EB346C7AE967
         control-id: cm-8.1
         description: >-
@@ -575,14 +620,20 @@ component-definition:
 
           # BigBang Implementation
           BigBang’s Istio deployment satisfies this requirement automatically.
-
+        links:
+          - href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
+            rel: reference
+            text: Lula Validation
       - uuid: A740C741-23B4-4ED9-937C-E0276A9B92EE
         control-id: cm-8.2
         description: >-
           Provides an inventory of all workloads (including mission apps) in the service mesh, viewable in Kiali. The inventory is automatically and continuously updated.
 
           CM-8.2 is not required for FedRAMP Moderate.
-
+        links:
+          - href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
+            rel: reference
+            text: Lula Validation
       - uuid: 61615706-5395-4168-8AD0-5C4ACBCC5D7E
         control-id: ia-2
         description: >-
@@ -601,7 +652,10 @@ component-definition:
 
           # BigBang Implementation
           BigBang deploys authservice as part of its default configuration. Istio implements IA-2 for all applications that opt in to using authservice because BigBangs configuration prohibits all traffic that is not authenticated in that case. See AC-14 for more information on authservice in BigBang.
-
+        links:
+          - href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
+            rel: reference
+            text: Lula Validation
       - uuid: 3004BB1D-0F50-48F1-ABFE-40CC522B1C15
         control-id: ia-4
         description: >-
@@ -632,7 +686,10 @@ component-definition:
 
           # BigBang Implementation
           BigBang implements service account management practices in accordance with IA-4, therefore BigBang’s Istio identities for mission applications satisfy IA-4 requirements.
-
+        links:
+          - href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
+            rel: reference
+            text: Lula Validation
       - uuid: 3FC44715-6068-44E5-9079-641D3FAA6A14
         control-id: ia-7
         description: >-
@@ -651,14 +708,20 @@ component-definition:
 
           # BigBang Implementation
           BigBang uses the FIPS builds from the Tetrate Istio Distribution by default, therefore uses the best available cryptographic libraries by default.
-
+        links:
+          - href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
+            rel: reference
+            text: Lula Validation
       - uuid: FE110D6B-CCB5-41E8-B2DE-287ED843D417
         control-id: ia-9
         description: >-
           Istio registers all workload identities in the service mesh. The identity is transmitted in the mTLS certificate when establishing communication between services, and is validated by Istio sidecars.
 
           IA-9 is not required for FedRAMP Moderate.
-
+        links:
+          - href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
+            rel: reference
+            text: Lula Validation
       - uuid: 82AC8314-BDA8-4A4D-B54D-4A0233563C7C
         control-id: sc-1
         description: >-
@@ -681,7 +744,10 @@ component-definition:
 
           # BigBang Implementation
           BigBang provides extensive documentation for its components [here](TODO). The overall security policy is documented [here](TODO).
-
+        links:
+          - href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
+            rel: reference
+            text: Lula Validation
       - uuid: 986E0C8B-6956-42AF-804E-FDB366DE6EDC
         control-id: sc-7
         description: >-
@@ -706,7 +772,10 @@ component-definition:
 
           # BigBang Implementation
           BigBang deployments conform to AC-3, AC-4, as well as AU-12 out of the box. This satisfies the SC-7 a. as well as SC-7 c. When combined with a standard network topology (like deploying BigBang into EKS on GovCloud), combined with BigBang’s default CNI, you also achieve SC-7 b.
-
+        links:
+          - href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
+            rel: reference
+            text: Lula Validation
       - uuid: CB84CC94-BBAA-4177-9836-5AD0DE3A9937
         control-id: sc-7.4
         description: >-
@@ -733,7 +802,10 @@ component-definition:
 
           # BigBang Implementation
           BigBang’s default deployment, including CNAP, satisfies SC-7 (4) a-c out of the box (given you implement access control policy for your mission applications, per the guidance in AC-3 and AC-4).
-
+        links:
+          - href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
+            rel: reference
+            text: Lula Validation
       - uuid: CB84CC94-BBAA-4177-9836-5AD0DE3A9937
         control-id: sc-7.5
         description: >-
@@ -826,7 +898,10 @@ component-definition:
 
           # BigBang Implementation
           BigBang’s default configuration enforces deny by default behavior for ingress and egress. Developers building mission applications writing their own access policy (per AC-4) must write policy in the “allow with positive matching” style. If they do so, the entire system conforms to SC-7 (5).
-
+        links:
+          - href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
+            rel: reference
+            text: Lula Validation
       - uuid: CB84CC94-BBAA-4177-9836-5AD0DE3A9937
         control-id: sc-8
         description: >-
@@ -843,7 +918,10 @@ component-definition:
 
           # BigBang Implementation
           BigBang deploys the FIPS builds of TID by default, and enforce STRICT mTLS between components through configuration. Therefore, BigBang’s deployment of Istio implements SC-8 on behalf of applications deployed in the platform.
-
+        links:
+          - href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
+            rel: reference
+            text: Lula Validation
       - uuid: 69415B92-0490-4A14-9E0F-E1EE61951F9C
         control-id: sc-8.1
         description: >-
@@ -860,7 +938,10 @@ component-definition:
 
           # BigBang Implementation
           BigBang deploys the FIPS builds of TID by default, and enforce STRICT mTLS between components through configuration. Therefore, BigBang’s deployment of Istio implements SC-8 (1) on behalf of applications deployed in the platform.
-
+        links:
+          - href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
+            rel: reference
+            text: Lula Validation
       - uuid: B6B9D143-6936-4C33-BF2A-3C2B1F282B25
         control-id: sc-13
         description: >-
@@ -877,7 +958,10 @@ component-definition:
 
           # BigBang Implementation
           BigBang deploys the FIPS builds of TID by default, and enforce STRICT mTLS between components through configuration. Therefore, BigBang’s deployment of Istio implements SC-13 on behalf of applications deployed in the platform.
-
+        links:
+          - href: '#506c5fd6-42a1-4a27-8be4-ff8d305dcbb2'
+            rel: reference
+            text: Lula Validation
   back-matter:
     resources:
     - uuid: 60826461-D279-468C-9E4B-614FAC44A306
