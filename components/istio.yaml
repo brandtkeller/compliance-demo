@@ -977,66 +977,86 @@ component-definition:
       title: Lula Validation
       rlinks:
         - href: lula.dev
+      remarks: This validation ensures all pods in the cluster - besides allowed exclusions - are istio injected by looking for the sidecar proxy
       description: >-
         target:
           provider: opa
           domain: kubernetes
           payload:
-            resourceRules:
-            - Group: 
-              Version: v1
-              Resource: pods
-              Namespaces: [monitoring, logging, promtail, tempo, kiali, neuvector, keycloak, metrics-server]
+            resources:
+              - name: pods
+                resourceRule:
+                  Group: 
+                  Version: v1
+                  Resource: pods
+                  Namespaces: [monitoring, logging, promtail, tempo, kiali, neuvector, keycloak, metrics-server]
             rego: |
               package validate
 
+              import future.keywords.every
+
               validate {
-                input.kind == "Pod"
-                images := input.spec.containers[_].image
-                contains(images, "proxyv2")
+                every pod in input.pods {
+                  pod.kind == "Pod"
+                  images := pod.spec.containers[_].image
+                  contains(images, "proxyv2")
+                }
               }
     - uuid: 506c5fd6-42a1-4a27-8be4-ff8d305dcbb2
       title: Lula Validation
       rlinks:
         - href: lula.dev
+      remarks: This validation ensures all istio deployments are online and healthy,
       description: >-
         target:
           provider: opa
           domain: kubernetes
           payload:
-            resourceRules:
-            - Group: apps
-              Version: v1
-              Resource: deployments
-              Namespaces: [istio-system]
+            resources:
+              - name: deployments
+                resourceRule:
+                  Group: apps
+                  Version: v1
+                  Resource: deployments
+                  Namespaces: [istio-system]
             rego: |
               package validate
 
+              import future.keywords.every
+
               validate {
-                input.kind == "Deployment"
-                podsRequired := input.status.replicas
-                podsReady := input.status.readyReplicas
-                podsReady == podsRequired
+                every deployment in input.deployments {
+                  deployment.kind == "Deployment"
+                  podsRequired := deployment.status.replicas
+                  podsReady := deployment.status.readyReplicas
+                  podsReady == podsRequired
+                }
               }
     - uuid: 68854323-4e62-4514-ac2b-9b0132a2b215
       title: Lula Validation
       rlinks:
         - href: lula.dev
+      remarks: This validation ensures all peerAuthentication resources in the cluster should be set to mtls.mode STRICT.
       description: >-
         target:
           provider: opa
           domain: kubernetes
           payload:
-            resourceRules:
-            - Group: security.istio.io
-              Version: v1beta1
-              Resource: peerauthentications
-              Namespaces: []
+            resources:
+              - name: peerAuths
+                resourceRule:
+                  Group: security.istio.io
+                  Version: v1beta1
+                  Resource: peerauthentications
+                  Namespaces: []
             rego: |
               package validate
 
+              import future.keywords.every
+
               validate {
-                input.kind == "PeerAuthentication"
-                mode := input.spec.mtls.mode
-                mode == "STRICT"
+                every peerAuthentication in input.peerAuths {
+                  mode := peerAuthentication.spec.mtls.mode
+                  mode == "STRICT"
+                }
               }
