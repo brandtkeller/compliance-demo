@@ -73,17 +73,23 @@ component-definition:
             provider: opa
             domain: kubernetes
             payload:
-              resourceRules:
-              - Group: apps
-                Version: v1
-                Resource: statefulsets
-                Namespaces: [tempo]
+              resources:
+                - name: statefulsets
+                  resource-rule:
+                    group: apps
+                    version: v1
+                    resource: statefulsets
+                    namespaces: [logging]
               rego: |
                 package validate
 
+                import future.keywords.every
+
                 validate {
-                  input.kind == "StatefulSet"
-                  podsRequired := input.status.replicas
-                  podsReady := input.status.readyReplicas
-                  podsReady == podsRequired
+                  every statefulset in input.statefulsets {
+                    statefulset.kind == "StatefulSet"
+                    podsRequired := statefulset.status.replicas
+                    podsReady := statefulset.status.readyReplicas
+                    podsReady == podsRequired
+                  }
                 }

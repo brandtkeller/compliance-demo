@@ -36,7 +36,7 @@ DEMO_PROMPT="${GREEN}➜ ${CYAN}\W ${COLOR_RESET}"
 clear
 
 ## Show the live environment
-pe "kubectl get po -A"
+pe "kubectl get hr -A"
 
 ## Show the available component files
 pe "ls -l ../components"
@@ -51,13 +51,28 @@ pe "cat ../components/istio.yaml | yq '.component-definition.components[0].contr
 
 pe "cat ../components/istio.yaml | yq '.component-definition.back-matter'"
 ## Validate the single component file
-pe "lula validate ../components/istio.yaml"
+pe "lula validate -f ../components/istio.yaml -a assessment-one.yaml" 
 
 ## Review the assessment
-p "cat assessment-results*.yaml"
-cat assessment-results*.yaml | yq
-## Remove the assessment
-rm assessment-results*.yaml
+pe "cat assessment-one.yaml | grep 'target-id: ac-4' -B 5"
+
+## Now inject some madness
+pe "kubectl create ns test"
+pe "kubectl run imperative-pod --image=docker.io/nginx:1.23.2 -l 'sidecar.istio.io/inject=false' -n test"
+
+## Now run validation two
+pe "lula validate -f ../components/istio.yaml -a assessment-two.yaml"
+
+## Review the assessment
+pe "cat assessment-two.yaml | grep 'target-id: ac-4' -B 5"
+
+
+## Evaluate
+pe "lula evaluate -f assessment-one.yaml -f assessment-two.yaml"
+
+kubectl delete pod imperative-pod -n test
+kubectl delete ns test
+
 
 ## Now discuss the platform as a collection of components
 p "cat platform.yaml"
@@ -68,7 +83,7 @@ p "component-generator aggregate -i platform.yaml"
 pe "cat oscal-component.yaml"
 cat oscal-component.yaml | yq
 ## Validate the whole platform
-pe "lula validate oscal-component.yaml"
+pe "lula validate -f oscal-component.yaml"
 
 ## Review the assessment
 p "cat assessment-results*.yaml"

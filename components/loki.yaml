@@ -18,7 +18,7 @@ component-definition:
     type: software
     title: Loki
     description: |
-      Deployment of Loki as a lighter weight replacement for elasticsearch
+      statefulset of Loki as a lighter weight replacement for elasticsearch
     purpose: Provides storage and indexing for logs in the cluster
     responsible-roles:
     - role-id: provider
@@ -169,17 +169,23 @@ component-definition:
           provider: opa
           domain: kubernetes
           payload:
-            resourceRules:
-            - Group: apps
-              Version: v1
-              Resource: statefulsets
-              Namespaces: [logging-loki]
+            resources:
+              - name: statefulsets
+                resource-rule:
+                  group: apps
+                  version: v1
+                  resource: statefulsets
+                  namespaces: [logging]
             rego: |
               package validate
 
+              import future.keywords.every
+
               validate {
-                input.kind == "StatefulSet"
-                podsRequired := input.status.replicas
-                podsReady := input.status.readyReplicas
-                podsReady == podsRequired
+                every statefulset in input.statefulsets {
+                  statefulset.kind == "StatefulSet"
+                  podsRequired := statefulset.status.replicas
+                  podsReady := statefulset.status.readyReplicas
+                  podsReady == podsRequired
+                }
               }

@@ -314,19 +314,25 @@ component-definition:
           provider: opa
           domain: kubernetes
           payload:
-            resourceRules:
-            - Group: apps
-              Version: v1
-              Resource: deployments
-              Namespaces: [monitoring]
+            resources:
+              - name: deployments
+                resource-rule:
+                  group: apps
+                  version: v1
+                  resource: deployments
+                  namespaces: [monitoring]
             rego: |
               package validate
 
+              import future.keywords.every
+
               validate {
-                input.kind == "Deployment"
-                podsRequired := input.status.replicas
-                podsReady := input.status.readyReplicas
-                podsReady == podsRequired
+                every deployment in input.deployments {
+                  deployment.kind == "Deployment"
+                  podsRequired := deployment.status.replicas
+                  podsReady := deployment.status.readyReplicas
+                  podsReady == podsRequired
+                }
               }
     - uuid: b8353b85-4bec-49f0-bdc0-713ebac483e6
       title: Lula Validation
@@ -337,19 +343,25 @@ component-definition:
           provider: opa
           domain: kubernetes
           payload:
-            resourceRules:
-            - Group: apps
-              Version: v1
-              Resource: statefulsets
-              Namespaces: [monitoring]
+            resources:
+              - name: statefulsets
+                resource-rule:
+                  group: apps
+                  version: v1
+                  resource: statefulsets
+                  namespaces: [istio-system]
             rego: |
               package validate
 
+              import future.keywords.every
+
               validate {
-                input.kind == "StatefulSet"
-                podsRequired := input.status.replicas
-                podsReady := input.status.readyReplicas
-                podsReady == podsRequired
+                every statefulset in input.statefulsets {
+                  statefulset.kind == "StatefulSet"
+                  podsRequired := statefulset.status.replicas
+                  podsReady := statefulset.status.readyReplicas
+                  podsReady == podsRequired
+                }
               }
     - uuid: 494a1c21-db5f-4049-9015-b00dc98f3ace
       title: Lula Validation
@@ -360,17 +372,20 @@ component-definition:
           provider: opa
           domain: kubernetes
           payload:
-            resourceRules:
-            - Group: apps
-              Version: v1
-              Resource: daemonsets
-              Namespaces: [monitoring]
+            resources:
+              - name: daemonsets
+                group: apps
+                version: v1
+                resource: daemonsets
+                namespaces: [monitoring]
             rego: |
               package validate
 
               validate {
-                input.kind == "DaemonSet"
-                podsDesired := input.status.desiredNumberScheduled
-                podsReady := input.status.numberReady
-                podsReady == podsDesired
+                every daemonset in input.daemonsets {
+                  daemonset.kind == "DaemonSet"
+                  podsDesired := daemonset.status.desiredNumberScheduled
+                  podsReady := daemonset.status.numberReady
+                  podsReady == podsDesired
+                }
               }
