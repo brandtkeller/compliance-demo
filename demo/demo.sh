@@ -70,8 +70,8 @@ pe "cat assessment-two.yaml | grep 'target-id: ac-4' -B 5"
 ## Evaluate
 pe "lula evaluate -f assessment-one.yaml -f assessment-two.yaml"
 
-kubectl delete pod imperative-pod -n test
-kubectl delete ns test
+pe "kubectl delete pod imperative-pod -n test"
+pe "kubectl delete ns test"
 
 
 ## Now discuss the platform as a collection of components
@@ -82,14 +82,13 @@ p "component-generator aggregate -i platform.yaml"
 ## Aggregation of components
 pe "cat oscal-component.yaml"
 cat oscal-component.yaml | yq
+pe "cat oscal-component.yaml | wc -l"
 ## Validate the whole platform
-pe "lula validate -f oscal-component.yaml"
+pe "lula validate -f oscal-component.yaml -a assessment-platform.yaml"
 
 ## Review the assessment
-p "cat assessment-results*.yaml"
-cat assessment-results*.yaml | yq
-## Remove the assessment
-rm assessment-results*.yaml
+p "cat assessment-platform.yaml"
+cat assessment-platform.yaml | yq
 
 # show a prompt so as not to reveal our true nature after
 # the demo has concluded
