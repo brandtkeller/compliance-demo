@@ -1,0 +1,204 @@
+assessment-results:
+  import-ap:
+    href: ""
+  metadata:
+    last-modified: 2024-06-22T04:25:30.666228617Z
+    oscal-version: 1.1.2
+    published: 2024-06-22T04:22:11.616961108Z
+    remarks: Assessment Results generated from Lula
+    title: '[System Name] Security Assessment Results (SAR)'
+    version: 0.0.1
+  results:
+    - description: Assessment results for performing Validations with Lula version v0.3.0-23-gc5d128f
+      findings:
+        - description: <how the specified control may be implemented if the containing component or capability is instantiated in a system security plan>
+          target:
+            status:
+              state: not-satisfied
+            target-id: ac-3
+            type: objective-id
+          title: 'Validation Result - Component:67bfdb93-d8e7-4cde-b606-4cbe09f6eee8 / Control Implementation: 06551d81-b3f6-5fd2-a4a4-ef4b001927d6 / Control:  ac-3'
+          uuid: 1234eca8-f4b1-4260-beeb-dec52a64762f
+        - description: <how the specified control may be implemented if the containing component or capability is instantiated in a system security plan>
+          related-observations:
+            - observation-uuid: 94a45174-aa76-4ce0-8615-b8583f437933
+          target:
+            status:
+              state: satisfied
+            target-id: ac-4
+            type: objective-id
+          title: 'Validation Result - Component:67bfdb93-d8e7-4cde-b606-4cbe09f6eee8 / Control Implementation: 06551d81-b3f6-5fd2-a4a4-ef4b001927d6 / Control:  ac-4'
+          uuid: a1834a13-8caf-4908-ba48-5a6e171ba76c
+      observations:
+        - collected: 2024-06-22T04:25:30.559441561Z
+          description: |
+            [TEST]: 1761ac07-80dd-47d2-947e-09f67943b986 - all-pods-istio-injected
+          methods:
+            - TEST
+          relevant-evidence:
+            - description: |
+                Result: satisfied
+              remarks: |
+                validate.msg: All pods have Istio sidecar proxy.
+                validate.exempt_namespaces_msg: Exempted Namespaces: istio-system, kube-system, local-path-storage, uds-dev-stack, zarf
+          uuid: 94a45174-aa76-4ce0-8615-b8583f437933
+      props:
+        - name: threshold
+          ns: https://docs.lula.dev/ns
+          value: "false"
+      reviewed-controls:
+        control-selections:
+          - description: Controls Assessed by Lula
+            include-controls:
+              - control-id: ac-3
+              - control-id: ac-4
+        description: Controls validated
+        remarks: Validation performed may indicate full or partial satisfaction
+      start: 2024-06-22T04:25:30.559801894Z
+      title: Lula Validation Result
+      uuid: 708dc9b8-bd29-4ef0-8997-5a78db711dc0
+    - description: Assessment results for performing Validations with Lula version v0.3.0-23-gc5d128f
+      findings:
+        - description: <how the specified control may be implemented if the containing component or capability is instantiated in a system security plan>
+          target:
+            status:
+              state: not-satisfied
+            target-id: ac-3
+            type: objective-id
+          title: 'Validation Result - Component:67bfdb93-d8e7-4cde-b606-4cbe09f6eee8 / Control Implementation: 06551d81-b3f6-5fd2-a4a4-ef4b001927d6 / Control:  ac-3'
+          uuid: 02b182c2-2ac2-4dcc-8849-c795f024494d
+        - description: <how the specified control may be implemented if the containing component or capability is instantiated in a system security plan>
+          related-observations:
+            - observation-uuid: eb939fe6-9649-445f-9bdc-8b66d16b82e7
+          target:
+            status:
+              state: not-satisfied
+            target-id: ac-4
+            type: objective-id
+          title: 'Validation Result - Component:67bfdb93-d8e7-4cde-b606-4cbe09f6eee8 / Control Implementation: 06551d81-b3f6-5fd2-a4a4-ef4b001927d6 / Control:  ac-4'
+          uuid: be1cd09a-4d89-4d84-947e-cb0a12a6453d
+      observations:
+        - collected: 2024-06-22T04:24:38.644343916Z
+          description: |
+            [TEST]: 1761ac07-80dd-47d2-947e-09f67943b986 - all-pods-istio-injected
+          methods:
+            - TEST
+          relevant-evidence:
+            - description: |
+                Result: not-satisfied
+              remarks: |
+                validate.msg: Istio sidecar proxy not found in pods: mission/mission-app-drift.
+                validate.exempt_namespaces_msg: Exempted Namespaces: istio-system, kube-system, local-path-storage, uds-dev-stack, zarf
+          uuid: eb939fe6-9649-445f-9bdc-8b66d16b82e7
+      props:
+        - name: threshold
+          ns: https://docs.lula.dev/ns
+          value: "false"
+      reviewed-controls:
+        control-selections:
+          - description: Controls Assessed by Lula
+            include-controls:
+              - control-id: ac-3
+              - control-id: ac-4
+        description: Controls validated
+        remarks: Validation performed may indicate full or partial satisfaction
+      start: 2024-06-22T04:24:38.644497291Z
+      title: Lula Validation Result
+      uuid: 53121f58-daa0-4242-a6d8-2d6a7d85571b
+    - description: Assessment results for performing Validations with Lula version v0.3.0-23-gc5d128f
+      findings:
+        - description: <how the specified control may be implemented if the containing component or capability is instantiated in a system security plan>
+          related-observations:
+            - observation-uuid: 41cd4ebb-6434-4208-bcb5-761fc1dea3af
+          target:
+            status:
+              state: satisfied
+            target-id: ac-4
+            type: objective-id
+          title: 'Validation Result - Component:67bfdb93-d8e7-4cde-b606-4cbe09f6eee8 / Control Implementation: 06551d81-b3f6-5fd2-a4a4-ef4b001927d6 / Control:  ac-4'
+          uuid: 2a9620ae-f501-4c26-9b69-7b38234fd8b5
+        - description: <how the specified control may be implemented if the containing component or capability is instantiated in a system security plan>
+          target:
+            status:
+              state: not-satisfied
+            target-id: ac-3
+            type: objective-id
+          title: 'Validation Result - Component:67bfdb93-d8e7-4cde-b606-4cbe09f6eee8 / Control Implementation: 06551d81-b3f6-5fd2-a4a4-ef4b001927d6 / Control:  ac-3'
+          uuid: 31622276-a5fc-4f05-a702-cace6469ffd2
+      observations:
+        - collected: 2024-06-22T04:22:53.565414637Z
+          description: |
+            [TEST]: 1761ac07-80dd-47d2-947e-09f67943b986 - all-pods-istio-injected
+          methods:
+            - TEST
+          relevant-evidence:
+            - description: |
+                Result: satisfied
+              remarks: |
+                validate.msg: All pods have Istio sidecar proxy.
+                validate.exempt_namespaces_msg: Exempted Namespaces: istio-system, kube-system, local-path-storage, uds-dev-stack, zarf
+          uuid: 41cd4ebb-6434-4208-bcb5-761fc1dea3af
+      props:
+        - name: threshold
+          ns: https://docs.lula.dev/ns
+          value: "false"
+      reviewed-controls:
+        control-selections:
+          - description: Controls Assessed by Lula
+            include-controls:
+              - control-id: ac-4
+              - control-id: ac-3
+        description: Controls validated
+        remarks: Validation performed may indicate full or partial satisfaction
+      start: 2024-06-22T04:22:53.565937551Z
+      title: Lula Validation Result
+      uuid: 4f917ce7-336b-4d0e-abee-82ecc9c112db
+    - description: Assessment results for performing Validations with Lula version v0.3.0-23-gc5d128f
+      findings:
+        - description: <how the specified control may be implemented if the containing component or capability is instantiated in a system security plan>
+          related-observations:
+            - observation-uuid: 6da49990-b7cf-4f3b-9e6e-c5f6172fb45f
+          target:
+            status:
+              state: not-satisfied
+            target-id: ac-4
+            type: objective-id
+          title: 'Validation Result - Component:67bfdb93-d8e7-4cde-b606-4cbe09f6eee8 / Control Implementation: 06551d81-b3f6-5fd2-a4a4-ef4b001927d6 / Control:  ac-4'
+          uuid: f35e5088-cb0d-49e8-89be-d2f2f01b7c34
+        - description: <how the specified control may be implemented if the containing component or capability is instantiated in a system security plan>
+          target:
+            status:
+              state: not-satisfied
+            target-id: ac-3
+            type: objective-id
+          title: 'Validation Result - Component:67bfdb93-d8e7-4cde-b606-4cbe09f6eee8 / Control Implementation: 06551d81-b3f6-5fd2-a4a4-ef4b001927d6 / Control:  ac-3'
+          uuid: a3593c84-33f7-47db-9fa1-b5fa9d65d63e
+      observations:
+        - collected: 2024-06-22T04:22:11.616707567Z
+          description: |
+            [TEST]: 1761ac07-80dd-47d2-947e-09f67943b986 - all-pods-istio-injected
+          methods:
+            - TEST
+          relevant-evidence:
+            - description: |
+                Result: not-satisfied
+              remarks: |
+                validate.msg: Istio sidecar proxy not found in pods: local-path-storage/local-path-provisioner-7577fdbbfb-wxgrn.
+                validate.exempt_namespaces_msg: Exempted Namespaces: istio-system, kube-system, uds-dev-stack, zarf
+          uuid: 6da49990-b7cf-4f3b-9e6e-c5f6172fb45f
+      props:
+        - name: threshold
+          ns: https://docs.lula.dev/ns
+          value: "true"
+      reviewed-controls:
+        control-selections:
+          - description: Controls Assessed by Lula
+            include-controls:
+              - control-id: ac-4
+              - control-id: ac-3
+        description: Controls validated
+        remarks: Validation performed may indicate full or partial satisfaction
+      start: 2024-06-22T04:22:11.616961108Z
+      title: Lula Validation Result
+      uuid: 27a16559-d2b2-4247-9ef0-109e66c1ee93
+  uuid: 2d7472f5-37a5-427f-a67d-744d776e7a6b

@@ -1,0 +1,38 @@
+kind: ZarfPackageConfig
+metadata:
+  name: service-mesh-compliance
+  description: "Simple example to load compliant and non-compliant workloads"
+
+components:
+  - name: istio-base
+    required: true
+    description: "istio for arm64"
+    charts:
+      - name: base
+        url: https://istio-release.storage.googleapis.com/charts
+        version: 1.22.1 
+        namespace: istio-system
+
+  - name: istiod
+    required: true
+    description: "istiod for arm64"
+    images:
+      - docker.io/istio/pilot:1.22.1
+      - docker.io/istio/proxyv2:1.22.1
+      
+    charts:
+      - name: istiod
+        url: https://istio-release.storage.googleapis.com/charts
+        version: 1.22.1 
+        namespace: istio-system
+
+  - name: mission-app
+    required: true
+    description: "mission-app for cluster"
+    images:
+      - docker.io/nginx:1.27.0
+    manifests:
+      - name: mission-app-man-fests
+        namespace: mission
+        files:
+          - pod.yaml
