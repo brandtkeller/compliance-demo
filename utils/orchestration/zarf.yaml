@@ -32,7 +32,7 @@ components:
     images:
       - docker.io/nginx:1.27.0
     manifests:
-      - name: mission-app-man-fests
+      - name: mission-app-manifests
         namespace: mission
         files:
           - pod.yaml

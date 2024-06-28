@@ -1,0 +1,73 @@
+component-definition:
+  components:
+    - control-implementations:
+        - description: Control Implementation Description
+          implemented-requirements:
+            - control-id: ac-4
+              description: <how the specified control may be implemented if the containing component or capability is instantiated in a system security plan>
+              remarks: |-
+                STATEMENT:
+                Enforce approved authorizations for controlling the flow of information within the system and between connected systems based on [Assignment: organization-defined information flow control policies].
+              uuid: fcb5d118-d1b4-4e01-ac51-3e5c70a31dea
+              links:
+                - href: 'file://./validation.yaml'
+                  rel: lula
+            - control-id: ac-4.4
+              description: <how the specified control may be implemented if the containing component or capability is instantiated in a system security plan>
+              remarks: |-
+                STATEMENT:
+                Prevent encrypted information from bypassing [Assignment: organization-defined information flow control mechanisms] by [Selection: (one-or-more) organization-defined decrypting the information; blocking the flow of the encrypted information; terminating communications sessions attempting to pass encrypted information; {{ insert: param, ac-04.04_odp.03 }} ].
+              uuid: d1048b87-45d9-4559-9942-e971cef5ec36
+            - control-id: ac-4.21
+              description: <how the specified control may be implemented if the containing component or capability is instantiated in a system security plan>
+              remarks: |-
+                STATEMENT:
+                Separate information flows logically or physically using [Assignment: organization-defined organization-defined mechanisms and/or techniques] to accomplish [Assignment: organization-defined required separations].
+              uuid: 37a37553-f3d9-4ead-ab84-70da68a52152
+            - control-id: ac-6.3
+              description: <how the specified control may be implemented if the containing component or capability is instantiated in a system security plan>
+              remarks: |-
+                STATEMENT:
+                Authorize network access to [Assignment: organization-defined privileged commands] only for [Assignment: organization-defined compelling operational needs] and document the rationale for such access in the security plan for the system.
+              uuid: 5b12fead-7a36-484c-ae2f-32dbd54a247e
+            - control-id: ac-6.9
+              description: <how the specified control may be implemented if the containing component or capability is instantiated in a system security plan>
+              remarks: |-
+                STATEMENT:
+                Log the execution of privileged functions.
+              uuid: 32b43824-135d-4cef-8a05-127d39be27f6
+            - control-id: au-2
+              description: <how the specified control may be implemented if the containing component or capability is instantiated in a system security plan>
+              remarks: |
+                STATEMENT:
+                a. Identify the types of events that the system is capable of logging in support of the audit function: [Assignment: organization-defined event types];
+                b. Coordinate the event logging function with other organizational entities requiring audit-related information to guide and inform the selection criteria for events to be logged;
+                c. Specify the following event types for logging within the system: [Assignment: organization-defined organization-defined event types (subset of the event types defined in [AU-2a.](#au-2_smt.a)) along with the frequency of (or situation requiring) logging for each identified event type];
+                d. Provide a rationale for why the event types selected for logging are deemed to be adequate to support after-the-fact investigations of incidents; and
+                e. Review and update the event types selected for logging [Assignment: organization-defined frequency].
+              uuid: 9372937e-bc96-4b62-9268-43ce03710d8d
+            - control-id: au-3
+              description: <how the specified control may be implemented if the containing component or capability is instantiated in a system security plan>
+              remarks: |
+                STATEMENT:
+                Ensure that audit records contain information that establishes the following:a. What type of event occurred;
+                b. When the event occurred;
+                c. Where the event occurred;
+                d. Source of the event;
+                e. Outcome of the event; and
+                f. Identity of any individuals, subjects, or objects/entities associated with the event.
+              uuid: 26cd2641-d964-492e-b606-50462c6065bc
+          source: file://./NIST_SP-800-53_rev5_catalog.json
+          uuid: 06551d81-b3f6-5fd2-a4a4-ef4b001927d6
+      description: Component Description
+      title: service mesh
+      type: software
+      uuid: 40e44dcd-3af3-42bd-a616-7a71a5b7efa2
+  metadata:
+    last-modified: 2024-06-24T15:35:45.547901534Z
+    oscal-version: 1.1.2
+    published: 2024-06-24T15:35:45.547901534Z
+    remarks: Lula Generated Component Definition
+    title: Component Title
+    version: 0.0.1
+  uuid: 0a017deb-df76-4236-837e-011a2f26eecb

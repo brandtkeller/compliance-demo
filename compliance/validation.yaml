@@ -1,0 +1,56 @@
+metadata:
+  name: all-pods-istio-injected
+  uuid: 1761ac07-80dd-47d2-947e-09f67943b986
+domain:
+  type: kubernetes
+  kubernetes-spec:
+    resources:
+      - name: pods
+        resource-rule:
+          version: v1
+          resource: pods
+          namespaces: []
+provider:
+  type: opa
+  opa-spec:
+    rego: |
+      package validate
+
+      import future.keywords.every
+      import future.keywords.in
+
+      # Default policy result
+      default validate = false
+      default msg = "Not evaluated"
+
+      exempt_namespaces := {"kube-system", "istio-system", "uds-dev-stack", "zarf", "local-path-storage"}
+      exempt_namespaces_msg = sprintf("Exempted Namespaces: %s", [concat(", ", exempt_namespaces)])
+
+      validate {
+        has_proxyv2_sidecar.result
+      }
+      msg = has_proxyv2_sidecar.msg
+
+      # Check for proxyv2 container in pod spec
+      no_proxyv2 = [sprintf("%s/%s", [pod.metadata.namespace, pod.metadata.name]) | pod := input.pods[_]; not contains_proxyv2(pod); not is_exempt(pod)]
+
+      has_proxyv2_sidecar = {"result": true, "msg": msg} {
+        count(no_proxyv2) == 0
+        msg := "All pods have Istio sidecar proxy."
+      } else = {"result": false, "msg": msg} {
+        msg := sprintf("Istio sidecar proxy not found in pods: %s.", [concat(", ", no_proxyv2)])
+      }
+
+      contains_proxyv2(pod) {
+        images := pod.spec.containers[_].image
+        contains(images, "/proxyv2:")
+      }
+
+      is_exempt(pod) {
+          pod.metadata.namespace in exempt_namespaces
+      }
+    output:
+      validation: validate.validate
+      observations:
+        - validate.msg
+        - validate.exempt_namespaces_msg
